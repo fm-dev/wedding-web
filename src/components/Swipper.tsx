@@ -4,7 +4,7 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import image1 from "../assets/gallery/image1.jpg";
+import image1 from "../assets/gallery/7R405831.jpg";
 
 const stories = [
     {
