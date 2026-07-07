@@ -9,7 +9,7 @@ import 'lightgallery/css/lg-thumbnail.css';
 
 import lgZoom from 'lightgallery/plugins/zoom';
 import lgVideo from 'lightgallery/plugins/video';
-import lgThumbnail from 'lightgallery/plugins/thumbnail';
+// import lgThumbnail from 'lightgallery/plugins/thumbnail';
 
 import fjGallery from 'flickr-justified-gallery';
 
