@@ -10,6 +10,8 @@ import { Gallery } from "../components/Galery";
 import CountDown from "../components/CountDown";
 import WeddingEvent from "../components/WeddingEvent";
 import Swipper from "../components/Swipper";
+import RSVP from "../components/RSVP";
+import GiftCard from "../components/GiftCard";
 // import AutoScrollPage from "../components/AutoScrollPage";
 export default function Hero() {
     return (
@@ -45,10 +47,10 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
-                className="hero-section  px-10 py-20 bg-[#000000]" 
+                className="hero-section  px-10 py-20 "
             >
 
-                <div className="text-[#E0CD67] text-center text-4xl p-4 bg-[#000000]"
+                <div className="text-[#E0CD67] text-center text-4xl p-4 "
                     style={{ fontFamily: "Noto Sans NKo Unjoined" }}
                 >
                     <br />
@@ -76,7 +78,7 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
-                className="hero-section bg-[#000000]"
+                className="hero-section "
             >
                 <div className="h-[300px] flex flex-col justify-end px-10 pb-6 text-center">
 
@@ -254,6 +256,12 @@ export default function Hero() {
                 </div>
 
 
+            </div>
+            <div>
+                <GiftCard />
+            </div>
+            <div className=" p-2 ">
+                <RSVP />
             </div>
 
         </div>

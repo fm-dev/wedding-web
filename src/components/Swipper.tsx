@@ -5,32 +5,30 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 import image1 from "../assets/gallery/7R405831.jpg";
-
+import prewed from "../assets/gallery/PREWED.jpeg"
+import Vacation from "../assets/gallery/VECATION.jpeg"
+import Engagement from "../assets/gallery/ENGEGMENT.jpeg"
+import first from "../assets/gallery/first.jpeg"
 const stories = [
     {
-        title: "First Date",
-        image: image1,
-        desc: "Awal pertama kali bertemu dan saling mengenal.",
+        title: "First Meet",
+        image: first,
+        desc: "Awal kisah kami dimulai di kampus Fajri. Sebuah pertemuan sederhana yang membawa kami saling mengenal."
     },
     {
-        title: "Coffee Time",
-        image: image1,
-        desc: "Mulai sering menghabiskan waktu bersama.",
-    },
-    {
-        title: "Vacation",
-        image: image1,
-        desc: "Liburan pertama yang tak terlupakan.",
+        title: "Liburan",
+        image: Vacation,
+        desc: "Perjalanan pertama kami di Jakarta, menciptakan banyak cerita dan kenangan yang tak terlupakan. dan tentu nya pasti ditemanin keluarga :)"
     },
     {
         title: "Engagement",
-        image: image1,
-        desc: "Momen lamaran penuh kebahagiaan.",
+        image: Engagement,
+        desc: "Hari istimewa ketika sebuah janji terucap. Alhamdulillah, langkah menuju masa depan dipermudah."
     },
     {
         title: "Prewedding",
-        image: image1,
-        desc: "Mengabadikan perjalanan cinta.",
+        image: prewed,
+        desc: "Sebuah sesi foto penuh cinta sebagai kenangan menuju hari bahagia yang telah dinantikan."
     },
     {
         title: "Wedding Day",
@@ -44,7 +42,7 @@ export default function StorySlider() {
         <div className="story-section">
             <Swiper
                 modules={[Autoplay, Pagination]}
-                slidesPerView={3}
+                slidesPerView={2}
                 spaceBetween={20}
                 loop={true}
                 centeredSlides={false}
@@ -59,15 +57,15 @@ export default function StorySlider() {
                 }}
                 breakpoints={{
                     320: {
-                        slidesPerView: 3,
+                        slidesPerView: 2,
                         spaceBetween: 10,
                     },
                     768: {
-                        slidesPerView: 3,
+                        slidesPerView: 2,
                         spaceBetween: 16,
                     },
                     1024: {
-                        slidesPerView: 3,
+                        slidesPerView: 2,
                         spaceBetween: 20,
                     },
                 }}
@@ -81,7 +79,7 @@ export default function StorySlider() {
                             }}
                         >
                             <div className="overlay">
-                                <h3>{story.title}</h3>
+                                <h5>{story.title}</h5>
                                 <p>{story.desc}</p>
                             </div>
                         </div>

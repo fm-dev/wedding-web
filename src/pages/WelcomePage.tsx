@@ -1,9 +1,16 @@
 import { motion } from "framer-motion"
 import { weddingData } from "../data/wedding"
 import heroImage from "../assets/hero.jpg"
-
+import React from "react"
+import HeroPage from "../pages/HeroPage"
 export default function Welcome() {
+  const [flagHeroPage, setFlagHeroPage] = React.useState(false);
+
+  const handleFlagClick = () =>{
+    setFlagHeroPage(true);
+  }
   return (
+    (!flagHeroPage) ? (
     <section className="relative min-h-screen overflow-hidden">
       {/* Background image full */}
       <img
@@ -35,14 +42,17 @@ export default function Welcome() {
             {weddingData.date}
           </p>
 
-          <a
-            href="/hero"
-            className="inline-block rounded-full border border-white/30 bg-white/20 px-8 py-3 text-white backdrop-blur-sm transition hover:bg-white/30"
+          <button
+            onClick={handleFlagClick}
+            className="inline-block rounded-full border border-white/30 bg-white/20 px-8 py-3 text-white backdrop-blur-sm transition hover:bg-white/30" 
           >
             Lihat Undangan
-          </a>
+          </button>
         </motion.div>
       </div>
     </section>
+  ):(
+    <HeroPage />
+  )
   )
 }

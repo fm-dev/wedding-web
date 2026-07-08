@@ -18,10 +18,10 @@ import image2 from '../assets/gallery/7R405850.jpg';
 import image3 from '../assets/gallery/7R405781.jpg';
 import image4 from '../assets/gallery/7R405831.jpg';
 import image5 from '../assets/gallery/7R405975.jpg';
-// import image6 from '../assets/gallery/7R405848.jpg';
-// import image7 from '../assets/gallery/7R405849.jpg';
-// import image8 from '../assets/gallery/7R405850.jpg';
-// import image9 from '../assets/gallery/7R405940.jpg';
+import image6 from '../assets/gallery/7R405848.jpg';
+import image7 from '../assets/gallery/7R405849.jpg';
+import image8 from '../assets/gallery/7R405850.jpg';
+import image9 from '../assets/gallery/7R405940.jpg';
 // import image10 from '../assets/gallery/7R405945.jpg';
 // import image11 from '../assets/gallery/7R405966.jpg';
 export const Gallery = () => {
@@ -120,42 +120,55 @@ export const Gallery = () => {
           />
         </a>
         <a
-          data-lg-size="1600-1126"
-          data-pinterest-text="Pin it3"
-          data-tweet-text="lightGallery slide  4"
-          className="gallery__item"
-          data-src="https://images.unsplash.com/photo-1477322524744-0eece9e79640?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80"
-          data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@juanster' >Juan Davila</a></h4><p>Location - <a href='Bled, Slovenia'>Bled, Slovenia</a> Wooded lake island </p>"
-        >
-          <img
-            className="img-responsive"
-            src="https://images.unsplash.com/photo-1477322524744-0eece9e79640?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&auto=format&fit=crop&w=240&q=80"
-          />
-        </a>
-        <a
-          data-lg-size="1600-1063"
-          data-pinterest-text="Pin it3"
-          data-tweet-text="lightGallery slide  4"
-          className="gallery__item"
-          data-src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1600&q=80"
-          data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@davidmarcu' >David Marcu</a></h4><p>Location - <a href='https://unsplash.com/s/photos/ciuca%C8%99-peak%2C-romania'>Ciucaș Peak, Romania</a> Alone in the unspoilt wilderness </p>"
-        >
-          <img
-            className="img-responsive"
-            src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=240&q=80"
-          />
-        </a>
-        <a
           data-lg-size="1600-2400"
           data-pinterest-text="Pin it2"
           data-tweet-text="lightGallery slide  2"
           className="gallery__item"
-          data-src={image1}
+          data-src={image9}
           data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@therawhunter' >Massimiliano Morosinotto </a></h4><p> Location - <a href='https://unsplash.com/s/photos/tre-cime-di-lavaredo%2C-italia'>Tre Cime di Lavaredo, Italia</a>This is the Way</p>"
         >
           <img
             className="img-responsive"
-            src={image1}
+            src={image9}
+          />
+        </a>
+        <a
+          data-lg-size="1600-2400"
+          data-pinterest-text="Pin it3"
+          data-tweet-text="lightGallery slide  4"
+          className="gallery__item"
+          data-src={image8}
+          data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@thesaboo' >Sascha Bosshard </a></h4><p> Location - <a href='https://unsplash.com/s/photos/pizol%2C-mels%2C-schweiz'>Pizol, Mels, Schweiz</a></p>"
+        >
+          <img
+            className="img-responsive"
+            src={image8}
+          />
+        </a>
+        <a
+          data-lg-size="1600-2398"
+          data-pinterest-text="Pin it3"
+          data-tweet-text="lightGallery slide  4"
+          className="gallery__item"
+          data-src={image7}
+          data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@yusufevli' >Yusuf Evli </a></h4><p> Foggy Road</p>"
+        >
+          <img
+            className="img-responsive"
+            src={image7}
+          />
+        </a>
+        <a
+          data-lg-size="1600-2398"
+          data-pinterest-text="Pin it3"
+          data-tweet-text="lightGallery slide  4"
+          className="gallery__item"
+          data-src={image6}
+          data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@yusufevli' >Yusuf Evli </a></h4><p> Foggy Road</p>"
+        >
+          <img
+            className="img-responsive"
+            src={image6}
           />
         </a>
       </LightGallery>
