@@ -1,6 +1,5 @@
 import { motion } from "framer-motion";
 import { weddingData } from "../data/wedding";
-import heroImage from "../assets/hero.jpg";
 import ayangImage from "../assets/ayang.jpg";
 import iyanImage from "../assets/iyan.jpg";
 import left from "../assets/left.png";
@@ -12,8 +11,13 @@ import WeddingEvent from "../components/WeddingEvent";
 import Swipper from "../components/Swipper";
 import RSVP from "../components/RSVP";
 import GiftCard from "../components/GiftCard";
+import AOS from 'aos';
+import 'aos/dist/aos.css';
+// import { useEffect } from "react";
+import Typewriter from "typewriter-effect";
 // import AutoScrollPage from "../components/AutoScrollPage";
 export default function Hero() {
+    AOS.init({ once: false, duration: 1000, })
     return (
         <div className="relative">
             {/* Musik Icon Fixed di pojok kanan bawah */}
@@ -23,7 +27,7 @@ export default function Hero() {
             {/* Hero Image */}
             <div className="relative w-full  mx-auto overflow-hidden ">
                 <img
-                    src={heroImage}
+                    src="https://wedding-fajri.s3.nevaobjects.id/hero.jpg"
                     alt="Wedding Background"
                     className="w-full h-[650px] object-cover"
                 />
@@ -32,7 +36,7 @@ export default function Hero() {
                 <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/10 to-transparent"></div>
 
                 {/* Tulisan */}
-                <div className="absolute top-6 left-1/2 -translate-x-1/2 text-center z-10 w-100">
+                <div data-aos="fade-down" className="absolute top-6 left-1/2 -translate-x-1/2 text-center z-10 w-100">
                     <h1
                         className="text-white text-5xl leading-tight"
                         style={{ fontFamily: "August Script" }}
@@ -52,6 +56,7 @@ export default function Hero() {
 
                 <div className="text-[#E0CD67] text-center text-4xl p-4 "
                     style={{ fontFamily: "Noto Sans NKo Unjoined" }}
+                    data-aos="fade-down"
                 >
                     <br />
                     وَمِنْ اٰيٰتِهٖٓ اَنْ خَلَقَ لَكُمْ مِّنْ اَنْفُسِكُمْ اَزْوَاجًا لِّتَسْكُنُوْٓا اِلَيْهَا وَجَعَلَ بَيْنَكُمْ مَّوَدَّةً وَّرَحْمَةًۗ اِنَّ فِيْ ذٰلِكَ لَاٰيٰتٍ لِّقَوْمٍ يَّتَفَكَّرُوْنَ
@@ -60,6 +65,7 @@ export default function Hero() {
                 <div
                     className="text-[#FFDBCC] text-center text-xl p-4"
                     style={{ fontFamily: "Noto Sans NKo Unjoined" }}
+                    data-aos="fade-down"
                 >
 
                     "Dan di antara tanda-tanda (kebesaran)-Nya ialah Dia
@@ -80,7 +86,7 @@ export default function Hero() {
                 transition={{ duration: 1 }}
                 className="hero-section "
             >
-                <div className="h-[300px] flex flex-col justify-end px-10 pb-6 text-center">
+                <div data-aos="fade-right" className="h-[300px] flex flex-col justify-end px-10 pb-6 text-center">
 
                     <div
                         className="text-white text-3xl italic text-left"
@@ -94,16 +100,17 @@ export default function Hero() {
                 </div>
 
                 <div className="bg-[#FEFEF9] px-10">
-                    <div className="text-[#5b0000] text-[160px] leading-none -mt-10 text-center">
+                    <div data-aos="fade-left" className="text-[#5b0000] text-[160px] leading-none -mt-10 text-center">
                         VE
                     </div>
                     <div
                         className="text-[#5b0000] text-3xl italic text-right"
                         style={{ fontFamily: "August Script" }}
+                        data-aos="fade-left"
                     >
                         With You
                     </div>
-                    <div>
+                    <div >
                         <img
                             src={left}
                             alt="Wedding Background"
@@ -115,22 +122,33 @@ export default function Hero() {
                             src={ayangImage}
                             alt="Wedding Background"
                             className="w-full h-[650px] object-cover"
+                            data-aos="fade-down-right"
                         />
                         <div
                             className="text-3xl text-[#5b0000] font-bold"
                             style={{ fontFamily: "TheSeasonsRegular" }}
                         >
-                            Dea Ayu Ananda
+                            <Typewriter
+                                options={{
+                                    strings: ["Dea Ayu Ananda"],
+                                    autoStart: true,
+                                    loop: true,
+
+                                }}
+                            />
+
                         </div>
-                        <div className="text-[#5b0000] text-xl flex items-center">
-                            <FaInstagram className="" />
-                            Deaayuananda
-                        </div>
-                        <div className="text-xl">
-                            <span className="text-[#5b0000]" style={{ fontFamily: "TheSeasonsRegular" }}>
-                                Anak ke dua dari
-                            </span>{" "}
-                            Ibu yanti dan <br /> Bapak sudimianto
+                        <div data-aos="zoom-in-right">
+                            <div className="text-[#5b0000] text-xl flex items-center">
+                                <FaInstagram className="" />
+                                Deaayuananda
+                            </div>
+                            <div className="text-xl">
+                                <span className="text-[#5b0000]" style={{ fontFamily: "TheSeasonsRegular" }}>
+                                    Anak ke dua dari
+                                </span>{" "}
+                                Ibu yanti dan <br /> Bapak sudimianto
+                            </div>
                         </div>
                     </div>
                     <div className="mt-[50px] pb-[100px] ">
@@ -138,37 +156,48 @@ export default function Hero() {
                             src={iyanImage}
                             alt="Wedding Background"
                             className="w-full h-[650px] object-cover"
+                            data-aos="fade-down-left"
                         />
                         <div
                             className="text-3xl text-[#5b0000] font-bold text-right"
                             style={{ fontFamily: "TheSeasonsRegular" }}
                         >
-                            M.Fajri Afriyansyah
+                            <Typewriter
+                                options={{
+                                    strings: ["M.Fajri Afriyansyah"],
+                                    autoStart: true,
+                                    loop: true,
+
+                                }}
+                            />
                         </div>
-                        <div className="text-[#5b0000] text-xl flex items-center text-right">
-                            <FaInstagram className="" />
-                            Deaayuananda
-                        </div>
-                        <div className="text-xl text-right ">
-                            <span className="text-[#5b0000]" style={{ fontFamily: "TheSeasonsRegular" }}>
-                                Anak ke pertama dari
-                            </span>{" "}
-                            Ibu Salmadiati dan <br /> Bapak Afrizal
+                        <div data-aos="zoom-in-left">
+
+                            <div className="text-[#5b0000] text-xl flex items-center text-right">
+                                <FaInstagram className="" />
+                                fajriafriyansyah_
+                            </div>
+                            <div className="text-xl text-right ">
+                                <span className="text-[#5b0000]" style={{ fontFamily: "TheSeasonsRegular" }}>
+                                    Anak ke pertama dari
+                                </span>{" "}
+                                Ibu Salmadiati dan <br /> Bapak Afrizal
+                            </div>
                         </div>
                     </div>
                 </div>
             </motion.div>
-            <div className=" p-2 pb-[100px]">
+            <div className=" p-2 pb-[100px] " data-aos="fade-up">
                 <div className="w-full pb-6 text-center mt-5">
-                    <div className="text-white text-4xl italic" style={{ fontFamily: "August Script" }}>
+                    <div  className="text-white text-4xl italic" style={{ fontFamily: "August Script" }}>
                         Our Galery
                     </div>
                 </div>
                 <Gallery />
             </div>
-            <div className=" p-2 pb-[100px] ">
+            <div className=" p-2 pb-[100px] " >
                 <div className="w-full pb-6 text-center mt-5">
-                    <div className=" mb-4 text-2xl italic text-white" style={{ fontFamily: "August Script" }}>
+                    <div  className=" mb-4 text-2xl italic text-white" style={{ fontFamily: "August Script" }}>
                         Our Beloved
                     </div>
                     <div

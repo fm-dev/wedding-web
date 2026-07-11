@@ -34,6 +34,49 @@ body {
   min-height: 100vh;
 }
 
+.gallery-image-wrapper {
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #f3e4c9;
+  min-height: 180px;
+}
+
+.gallery-skeleton {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0.45) 50%, rgba(255,255,255,0.2) 100%);
+  background-size: 200% 100%;
+  animation: gallery-shimmer 1.2s infinite linear;
+}
+
+.gallery-image-loading {
+  opacity: 0;
+  transform: scale(1.02);
+}
+
+.gallery-image-loaded {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.45s ease, transform 0.45s ease;
+}
+
+.img-responsive {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+@keyframes gallery-shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
 .rsvp-scrollbar {
   scrollbar-width: thin;
   scrollbar-color: rgba(224, 205, 103, 0.45) transparent;
@@ -242,4 +285,25 @@ body {
 .hero-section > div {
   position: relative;
   z-index: 2;
+}
+.guests-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+}
+
+.guest-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  padding: 1.5rem;
+  text-align: center;
+  color: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.guest-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.3);
 }
