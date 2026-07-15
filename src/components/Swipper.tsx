@@ -12,7 +12,7 @@ const stories = [
     },
     {
         title: "Liburan",
-        image: "https://wedding-fajri.s3.nevaobjects.id/liburan.jpeg" ,
+        image: "https://wedding-fajri.s3.nevaobjects.id/liburan.jpeg",
         desc: "Perjalanan pertama kami di Jakarta, menciptakan banyak cerita dan kenangan yang tak terlupakan. dan tentu nya pasti ditemanin keluarga :)"
     },
     {
@@ -28,8 +28,8 @@ const stories = [
     {
         title: "Wedding Day",
         image: "https://wedding-fajri.s3.nevaobjects.id/fadfadf.jpeg",
-        desc: "Hari bahagia yang dinanti.",
-    },
+        desc: "Kupikir pertemuan kita hanya singkat. Ternyata, kamu menjadi bagian terpenting dan alasan terbesar dalam bahagiaku.",
+    }
 ];
 
 export default function StorySlider() {

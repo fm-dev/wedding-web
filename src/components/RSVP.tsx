@@ -711,7 +711,7 @@ export default function RSVP() {
                                                                 }`}
                                                         >
                                                             {item.attendance === "hadir"
-                                                                ? `Hadir · ${item.guest ?? 1} orang`
+                                                                ? `Hadir `
                                                                 : "Tidak hadir"}
                                                         </span>
                                                     )}
