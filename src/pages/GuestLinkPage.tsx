@@ -29,22 +29,22 @@ export default function GuestLinkPage() {
       return "";
     }
 
-    return `Kepada Yth.
-Bapak/Ibu/Saudara/i
-${name}
-di tempat
+    return `Assalamualaikum Warahmatullahi Wabarakatuh
 
-Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i untuk menghadiri acara Resepsi Pernikahan kami.
+Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i
+${name} untuk menghadiri acara kami.
 
-Info lebih lengkap, silakan klik tautan di bawah ini:
+Berikut link undangan kami, untuk info lengkap dari acara bisa kunjungi :
 ${invitationUrl}
 
 Merupakan suatu kebahagiaan bagi kami apabila Bapak/Ibu/Saudara/i berkenan untuk hadir dan memberikan doa restu.
 
-Kami yang berbahagia,
-Keluarga Kedua Mempelai
+Mohon maaf perihal undangan hanya di bagikan melalui pesan ini.
 
-Mohon maaf, undangan hanya dibagikan melalui pesan ini.`;
+Terima kasih banyak atas perhatiannya.
+
+Salam Hormat
+Dea & Fajri`;
   }, [guestName, invitationUrl]);
 
   const copyToClipboard = async (

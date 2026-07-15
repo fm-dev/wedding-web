@@ -345,7 +345,7 @@ export default function Hero() {
                         <div >
                             <a target="_blank" href="https://www.instagram.com/deayuananda?igsh=MWxpajVuZWlxNTV6dw==" className="text-[#5b0000] text-xl flex items-center">
                                 <FaInstagram className="" />
-                                Deaayuananda
+                                deayuananda
                             </a>
                             <div className="text-xl">
                                 <span className="text-[#5b0000]" style={{ fontFamily: "TheSeasonsRegular" }}>
