@@ -14,13 +14,11 @@ import 'aos/dist/aos.css';
 // import { useEffect } from "react";
 import Typewriter from "typewriter-effect";
 // import AutoScrollPage from "../components/AutoScrollPage";
-import BubbleBackground from "../components/BubbleBackground";
 import ThankYouSection from "../components/ThankYouSection";
 export default function Hero() {
     AOS.init({ once: false, duration: 1000, })
     return (
         <div className="relative">
-            <BubbleBackground />
             {/* Musik Icon Fixed di pojok kanan bawah */}
             {/* <AutoScrollPage /> */}
             <Audio />
