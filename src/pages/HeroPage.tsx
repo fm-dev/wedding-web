@@ -250,7 +250,7 @@ export default function Hero() {
                     </div>
                     <div className="mt-[100px]">
                         <img
-                            src="https://wedding-fajri.s3.nevaobjects.id/lwfmvuggr4mn4iwkzuz3.webp"
+                            src="https://wedding-fajri.s3.nevaobjects.id/ayang.webp"
                             alt="Wedding Background"
                             className="w-full h-[650px] object-cover"
                             data-aos="fade-down-right"
@@ -278,7 +278,7 @@ export default function Hero() {
                                 <span className="text-[#5b0000]" style={{ fontFamily: "TheSeasonsRegular" }}>
                                     Anak ke dua dari
                                 </span>{" "}
-                                Ibu yanti dan <br /> Bapak sudimianto
+                                Ibu Afrida Yanti dan <br /> Bapak Sudimianto
                             </div>
                         </div>
                     </div>
