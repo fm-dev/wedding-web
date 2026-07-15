@@ -1,16 +1,28 @@
-import { useState, useEffect, useRef, type ChangeEvent, type FormEvent } from "react";
+import {
+    useState,
+    useEffect,
+    useRef,
+    type ChangeEvent,
+    type FormEvent,
+    type UIEventHandler,
+} from "react";
 import axios from "axios";
 import { motion } from "framer-motion";
 import {
+    FiCheckCircle,
     FiHeart,
     FiLock,
     FiMessageCircle,
     FiSend,
     FiUser,
+    FiXCircle,
 } from "react-icons/fi";
+
+type AttendanceStatus = "hadir" | "tidak_hadir";
 
 type RSVPForm = {
     name: string;
+    attendance: AttendanceStatus | "";
     guest: number;
     message: string;
 };
@@ -18,12 +30,16 @@ type RSVPForm = {
 type RSVPMessage = {
     name: string;
     message: string;
+    attendance?: AttendanceStatus;
+    guest?: number;
 };
 
 type ApiMessage = {
     id: number;
     sender: string;
     message: string;
+    attendance?: AttendanceStatus;
+    guest?: number;
     createdAt: string;
     updatedAt: string;
 };
@@ -32,6 +48,7 @@ export default function RSVP() {
 
     const [form, setForm] = useState<RSVPForm>({
         name: "",
+        attendance: "",
         guest: 1,
         message: ""
     });
@@ -64,30 +81,41 @@ export default function RSVP() {
     const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
         e.preventDefault();
 
-        if (!form.name || !form.message) return;
+        const attendance = form.attendance;
+        const sender = form.name.trim();
+        const message = form.message.trim();
+
+        if (!sender || !message || !attendance) return;
+
+        const guest = attendance === "hadir" ? form.guest : 0;
 
         setSubmitting(true);
         try {
             const res = await axios.post("https://expres-backend.ayaiyan.my.id/api/messages", {
-                sender: form.name,
-                message: form.message,
+                sender,
+                message,
+                attendance,
+                guest,
             });
 
             const created: ApiMessage | undefined = res.data?.data;
 
             setMessages((prev) => [
                 {
-                    name: created?.sender ?? form.name,
-                    message: created?.message ?? form.message,
+                    name: created?.sender ?? sender,
+                    message: created?.message ?? message,
+                    attendance: created?.attendance ?? attendance,
+                    guest: created?.guest ?? guest,
                 },
                 ...prev,
             ]);
 
-            setForm({
-                name: "",
+            setForm((prev) => ({
+                name: nameLocked ? prev.name : "",
+                attendance: "",
                 guest: 1,
                 message: "",
-            });
+            }));
         } catch (err) {
             console.error("Failed to send RSVP:", err);
         } finally {
@@ -124,6 +152,8 @@ export default function RSVP() {
                     const mapped = sorted.map((m) => ({
                         name: m.sender,
                         message: m.message,
+                        attendance: m.attendance,
+                        guest: m.guest,
                     }));
                     setMessages(mapped);
                     // show all fetched messages so scrollbar appears when content overflows
@@ -144,7 +174,7 @@ export default function RSVP() {
         };
     }, []);
 
-    const handleScroll: React.UIEventHandler<HTMLDivElement> = (e) => {
+    const handleScroll: UIEventHandler<HTMLDivElement> = (e) => {
         const el = e.currentTarget;
         if (el.scrollTop + el.clientHeight >= el.scrollHeight - 40) {
             setVisibleCount((prev) => Math.min(prev + 5, messages.length));
@@ -423,6 +453,61 @@ export default function RSVP() {
                                 </div>
                             </div>
 
+                            {/* Konfirmasi kehadiran */}
+                            <div>
+                                <label className="mb-2 block text-sm font-medium text-[#F5E8DF]">
+                                    Konfirmasi kehadiran
+                                </label>
+
+                                <div className="grid grid-cols-2 gap-3">
+                                    <button
+                                        type="button"
+                                        aria-pressed={form.attendance === "hadir"}
+                                        onClick={() =>
+                                            setForm((prev) => ({
+                                                ...prev,
+                                                attendance: "hadir",
+                                                guest: prev.guest > 0 ? prev.guest : 1,
+                                            }))
+                                        }
+                                        className={`flex items-center justify-center gap-2 rounded-2xl border px-4 py-3.5 text-sm font-semibold transition ${form.attendance === "hadir"
+                                                ? "border-[#E7CA88] bg-[#E7CA88] text-[#3D2115] shadow-[0_10px_24px_rgba(231,202,136,0.18)]"
+                                                : "border-[#E7CA88]/20 bg-[#2F170D]/65 text-[#F5E8DF] hover:border-[#E7CA88]/45 hover:bg-[#2F170D]/80"
+                                            }`}
+                                    >
+                                        <FiCheckCircle className="text-lg" />
+                                        Hadir
+                                    </button>
+
+                                    <button
+                                        type="button"
+                                        aria-pressed={form.attendance === "tidak_hadir"}
+                                        onClick={() =>
+                                            setForm((prev) => ({
+                                                ...prev,
+                                                attendance: "tidak_hadir",
+                                                guest: 0,
+                                            }))
+                                        }
+                                        className={`flex items-center justify-center gap-2 rounded-2xl border px-4 py-3.5 text-sm font-semibold transition ${form.attendance === "tidak_hadir"
+                                                ? "border-[#E7CA88] bg-[#E7CA88] text-[#3D2115] shadow-[0_10px_24px_rgba(231,202,136,0.18)]"
+                                                : "border-[#E7CA88]/20 bg-[#2F170D]/65 text-[#F5E8DF] hover:border-[#E7CA88]/45 hover:bg-[#2F170D]/80"
+                                            }`}
+                                    >
+                                        <FiXCircle className="text-lg" />
+                                        Tidak hadir
+                                    </button>
+                                </div>
+
+                                
+
+                                {!form.attendance && (
+                                    <p className="mt-2 text-xs text-[#F5E8DF]/45">
+                                        Pilih salah satu status kehadiran sebelum mengirim ucapan.
+                                    </p>
+                                )}
+                            </div>
+
                             {/* Ucapan */}
                             <div>
                                 <div className="mb-2 flex items-center justify-between">
@@ -493,7 +578,7 @@ export default function RSVP() {
 
                             <button
                                 type="submit"
-                                disabled={submitting || cooldown}
+                                disabled={submitting || cooldown || !form.attendance}
                                 className="
           group
           flex
@@ -579,9 +664,21 @@ export default function RSVP() {
 
                 {/* New UI: avatar list + message bubbles */}
                 <div className="mt-8">
-                    <div className="mb-4 px-2 flex items-center justify-between">
+                    <div className="mb-4 flex items-center justify-between gap-3 px-2">
                         <p className="text-sm font-semibold text-white">Ucapan Tamu</p>
-                        <span className="rounded-full bg-[#E0CD67]/20 px-2.5 py-1 text-xs text-[#FFE9B4]">{messages.length} chat</span>
+                        <div className="flex flex-wrap justify-end gap-2">
+                            <span className="rounded-full bg-[#E0CD67]/20 px-2.5 py-1 text-xs text-[#FFE9B4]">
+                                {messages.length} chat
+                            </span>
+                            <span className="rounded-full bg-emerald-300/15 px-2.5 py-1 text-xs text-emerald-100">
+                                {messages.reduce((total, item) =>
+                                    item.attendance === "hadir" ? total + (item.guest ?? 1) : total, 0
+                                )} hadir
+                            </span>
+                            <span className="rounded-full bg-rose-300/15 px-2.5 py-1 text-xs text-rose-100">
+                                {messages.filter((item) => item.attendance === "tidak_hadir").length} tidak hadir
+                            </span>
+                        </div>
                     </div>
 
                     <div ref={containerRef} onScroll={handleScroll} className="max-h-[36rem] overflow-y-auto pr-2 rsvp-scrollbar flex flex-col">
@@ -603,10 +700,21 @@ export default function RSVP() {
 
                                         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="flex-1">
                                             <div className="bg-white rounded-2xl p-4 shadow-sm">
-                                                <div className="flex items-center justify-between">
+                                                <div className="flex flex-wrap items-center justify-between gap-2">
                                                     <div className="font-semibold text-[#2B2B2B]">{item.name}</div>
-                                                    {/* optional location placeholder - hidden when not provided */}
-                                                    {false && <div className="text-xs text-[#6B7280]">at Bogor</div>}
+
+                                                    {item.attendance && (
+                                                        <span
+                                                            className={`rounded-full px-2.5 py-1 text-[11px] font-semibold ${item.attendance === "hadir"
+                                                                    ? "bg-emerald-100 text-emerald-700"
+                                                                    : "bg-rose-100 text-rose-700"
+                                                                }`}
+                                                        >
+                                                            {item.attendance === "hadir"
+                                                                ? `Hadir · ${item.guest ?? 1} orang`
+                                                                : "Tidak hadir"}
+                                                        </span>
+                                                    )}
                                                 </div>
                                                 <div className="mt-2 text-sm text-[#4B5563]">“{item.message || '—'}”</div>
                                             </div>

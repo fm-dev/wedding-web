@@ -1,130 +1,404 @@
-import { useEffect, useState } from 'react';
-import '../index.css';
+import {
+  useCallback,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 
-import LightGallery from 'lightgallery/react';
-import 'lightgallery/css/lightgallery.css';
-import 'lightgallery/css/lg-zoom.css';
-import 'lightgallery/css/lg-video.css';
-import 'lightgallery/css/lg-thumbnail.css';
+import type { TouchEvent } from "react";
 
-import lgZoom from 'lightgallery/plugins/zoom';
-import lgVideo from 'lightgallery/plugins/video';
-import fjGallery from 'flickr-justified-gallery';
 
-// 1. Definisikan list gambar di luar komponen agar tidak di-render ulang
-const IMAGES = [
-  "https://wedding-fajri.s3.nevaobjects.id/nrimursjqvbyvbuzvsji.webp",
-  "https://wedding-fajri.s3.nevaobjects.id/b6hgvbszjfghbwybfwpg.webp",
-  "https://wedding-fajri.s3.nevaobjects.id/q0oezvlxhthdlgpyhzpy.webp",
-  "https://wedding-fajri.s3.nevaobjects.id/z16oluuzkmc3mwtqshco.webp",
-  "https://wedding-fajri.s3.nevaobjects.id/c1uv7cddikrv96eykn1v.webp",
-  "https://wedding-fajri.s3.nevaobjects.id/eisztlp8fjvyxtzgpnyu.webp",
-  "https://wedding-fajri.s3.nevaobjects.id/hnjyhriidm2tx4rlga5s.webp",
-  "https://wedding-fajri.s3.nevaobjects.id/n3zfkaee9tlbcva0pchh.webp"
-];
+export interface GalleryImage {
+  id: string | number;
+  src: string;
+  thumbnail?: string;
+  alt: string;
+  caption?: string;
+}
 
-export const Gallery = () => {
-  const [imagesLoaded, setImagesLoaded] = useState(false);
+interface WeddingGalleryProps {
+  images: GalleryImage[];
+  initialIndex?: number;
+  showCaption?: boolean;
+}
+
+const SWIPE_THRESHOLD = 50;
+
+export default function WeddingGallery({
+  images,
+  initialIndex = 0,
+  showCaption = true,
+}: WeddingGalleryProps) {
+  const [activeIndex, setActiveIndex] = useState(initialIndex);
+  const [isLightboxOpen, setIsLightboxOpen] = useState(false);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+
+  const touchStartX = useRef<number | null>(null);
+  const thumbnailRefs = useRef<Array<HTMLButtonElement | null>>([]);
+  const hasInteractedRef = useRef(false);
+
+  const activeImage = images[activeIndex];
+
+  const previousImage = useCallback(() => {
+    hasInteractedRef.current = true;
+    setIsImageLoaded(false);
+
+    setActiveIndex((currentIndex) =>
+      currentIndex === 0 ? images.length - 1 : currentIndex - 1,
+    );
+  }, [images.length]);
+
+  const nextImage = useCallback(() => {
+    hasInteractedRef.current = true;
+    setIsImageLoaded(false);
+
+    setActiveIndex((currentIndex) =>
+      currentIndex === images.length - 1 ? 0 : currentIndex + 1,
+    );
+  }, [images.length]);
+
+  const selectImage = (index: number) => {
+    if (index === activeIndex) return;
+
+    hasInteractedRef.current = true;
+    setIsImageLoaded(false);
+    setActiveIndex(index);
+  };
+
+  const handleTouchStart = (event: TouchEvent<HTMLElement>) => {
+    touchStartX.current = event.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (event: TouchEvent<HTMLElement>) => {
+    if (touchStartX.current === null) return;
+
+    const touchEndX = event.changedTouches[0].clientX;
+    const difference = touchStartX.current - touchEndX;
+
+    if (Math.abs(difference) >= SWIPE_THRESHOLD) {
+      if (difference > 0) {
+        nextImage();
+      } else {
+        previousImage();
+      }
+    }
+
+    touchStartX.current = null;
+  };
 
   useEffect(() => {
-    // 2. Preload semua gambar menggunakan Promise.all
-    const loadImage = (src:any) => {
-      return new Promise((resolve, reject) => {
-        const img = new Image();
-        img.src = src;
-        img.onload = () => resolve(src);
-        img.onerror = (err) => reject(err);
-      });
+    if (!images.length) return;
+    if (!hasInteractedRef.current) return;
+
+    const previousIndex =
+      activeIndex === 0 ? images.length - 1 : activeIndex - 1;
+
+    const nextIndex =
+      activeIndex === images.length - 1 ? 0 : activeIndex + 1;
+
+    [images[previousIndex], images[nextIndex]].forEach((image) => {
+      const preloadImage = new Image();
+      preloadImage.src = image.src;
+    });
+
+    thumbnailRefs.current[activeIndex]?.scrollIntoView({
+      behavior: "smooth",
+      block: "nearest",
+      inline: "center",
+    });
+  }, [activeIndex, images]);
+
+  useEffect(() => {
+    if (!isLightboxOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+
+    const handleKeyboard = (event: KeyboardEvent) => {
+      if (event.key === "ArrowLeft") {
+        previousImage();
+      }
+
+      if (event.key === "ArrowRight") {
+        nextImage();
+      }
+
+      if (event.key === "Escape") {
+        setIsLightboxOpen(false);
+      }
     };
 
-    Promise.all(IMAGES.map((image) => loadImage(image)))
-      .then(() => {
-        setImagesLoaded(true);
-      })
-      .catch((err) => {
-        console.error("Gagal memuat beberapa gambar", err);
-        // Tetap set true agar gallery tidak stuck loading jika ada 1 gambar rusak
-        setImagesLoaded(true); 
-      });
-  }, []);
+    window.addEventListener("keydown", handleKeyboard);
 
-  // 3. Inisialisasi Justified Gallery hanya setelah gambar selesai di-preload & di-render
-  useEffect(() => {
-    if (imagesLoaded) {
-      fjGallery(document.querySelectorAll('.gallery'), {
-        itemSelector: '.gallery__item',
-        rowHeight: 180,
-        gutter: 2,
-        rowHeightTolerance: 0.1,
-        calculateItemsHeight: false,
-      });
-    }
-  }, [imagesLoaded]);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", handleKeyboard);
+    };
+  }, [isLightboxOpen, nextImage, previousImage]);
 
-  // Tampilkan loading screen sementara gambar diunduh di background
-  if (!imagesLoaded) {
+  if (!images.length) {
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '300px' }}>
-        <p>Memuat Galeri...</p> 
-        {/* Kamu bisa ganti ini dengan spinner CSS buatanmu */}
+      <div className="wedding-gallery-empty">
+        Belum ada foto yang tersedia.
       </div>
     );
   }
 
   return (
-    <div>
-      <LightGallery
-        plugins={[lgZoom, lgVideo]}
-        mode="lg-fade"
-        pager={false}
-        thumbnail={true}
-        galleryId={'nature'}
-        autoplayFirstVideo={false}
-        elementClassNames={'gallery'}
-        mobileSettings={{
-          controls: false,
-          showCloseIcon: false,
-          download: false,
-          rotate: false,
-        }}
+    <>
+      <section
+        className="wedding-gallery"
+        aria-label="Galeri foto pernikahan"
       >
-        <a
-          data-lg-size="1600-2400"
-          className="gallery__item"
-          data-src={IMAGES[0]}
-          data-sub-html="<h4>Photo by - <a href='#' >Wedding </a></h4>"
+        <div
+          className="wedding-gallery__stage"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
-          <img className="img-responsive" src={IMAGES[0]} loading="eager" decoding="sync" />
-        </a>
+          <div className="wedding-gallery__image-wrapper">
+            <div
+              className={`wedding-gallery__skeleton ${
+                isImageLoaded ? "wedding-gallery__skeleton--hidden" : ""
+              }`}
+            />
 
-        <a data-lg-size="1600-2400" className="gallery__item" data-src={IMAGES[1]}>
-          <img className="img-responsive" src={IMAGES[1]} loading="eager" decoding="sync" />
-        </a>
+            <img
+              key={activeImage.id}
+              className={`wedding-gallery__main-image ${
+                isImageLoaded
+                  ? "wedding-gallery__main-image--visible"
+                  : ""
+              }`}
+              src={activeImage.src}
+              alt={activeImage.alt}
+              draggable={false}
+              onLoad={() => setIsImageLoaded(true)}
+              onClick={() => setIsLightboxOpen(true)}
+            />
 
-        <a data-lg-size="1600-2398" className="gallery__item" data-src={IMAGES[2]}>
-          <img className="img-responsive" src={IMAGES[2]} loading="eager" decoding="sync" />
-        </a>
+            <div className="wedding-gallery__gradient" />
 
-        <a data-lg-size="1600-1067" className="gallery__item" data-src={IMAGES[3]}>
-          <img className="img-responsive" src={IMAGES[3]} loading="eager" decoding="sync" />
-        </a>
+            <button
+              type="button"
+              className="wedding-gallery__navigation wedding-gallery__navigation--left"
+              aria-label="Foto sebelumnya"
+              onClick={previousImage}
+            >
+              <ChevronLeftIcon />
+            </button>
 
-        <a data-lg-size="1600-1067" className="gallery__item" data-src={IMAGES[4]}>
-          <img className="img-responsive" src={IMAGES[4]} loading="eager" decoding="sync" />
-        </a>
+            <button
+              type="button"
+              className="wedding-gallery__navigation wedding-gallery__navigation--right"
+              aria-label="Foto berikutnya"
+              onClick={nextImage}
+            >
+              <ChevronRightIcon />
+            </button>
 
-        <a data-lg-size="1600-2400" className="gallery__item" data-src={IMAGES[5]}>
-          <img className="img-responsive" src={IMAGES[5]} loading="eager" decoding="sync" />
-        </a>
+            <button
+              type="button"
+              className="wedding-gallery__fullscreen"
+              aria-label="Buka foto penuh"
+              onClick={() => setIsLightboxOpen(true)}
+            >
+              <ExpandIcon />
+            </button>
 
-        <a data-lg-size="1600-2398" className="gallery__item" data-src={IMAGES[6]}>
-          <img className="img-responsive" src={IMAGES[6]} loading="eager" decoding="sync" />
-        </a>
+            <span className="wedding-gallery__counter">
+              {String(activeIndex + 1).padStart(2, "0")}
+              <span>/</span>
+              {String(images.length).padStart(2, "0")}
+            </span>
 
-        <a data-lg-size="1600-2398" className="gallery__item" data-src={IMAGES[7]}>
-          <img className="img-responsive" src={IMAGES[7]} loading="eager" decoding="sync" />
-        </a>
-      </LightGallery>
-    </div>
+            {showCaption && activeImage.caption && (
+              <div className="wedding-gallery__caption">
+                <p>{activeImage.caption}</p>
+              </div>
+            )}
+          </div>
+        </div>
+
+        <div className="wedding-gallery__thumbnails-wrapper">
+          <div className="wedding-gallery__thumbnails">
+            {images.map((image, index) => {
+              const isActive = index === activeIndex;
+
+              return (
+                <button
+                  key={image.id}
+                  ref={(element) => {
+                    thumbnailRefs.current[index] = element;
+                  }}
+                  type="button"
+                  className={`wedding-gallery__thumbnail ${
+                    isActive
+                      ? "wedding-gallery__thumbnail--active"
+                      : ""
+                  }`}
+                  aria-label={`Tampilkan foto ${index + 1}`}
+                  aria-current={isActive ? "true" : undefined}
+                  onClick={() => selectImage(index)}
+                >
+                  <img
+                    src={image.thumbnail ?? image.src}
+                    alt=""
+                    loading="lazy"
+                    draggable={false}
+                  />
+
+                  <span className="wedding-gallery__thumbnail-overlay" />
+                </button>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {isLightboxOpen && (
+        <div
+          className="wedding-lightbox"
+          role="dialog"
+          aria-modal="true"
+          aria-label="Tampilan foto penuh"
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          onClick={() => setIsLightboxOpen(false)}
+        >
+          <button
+            type="button"
+            className="wedding-lightbox__close"
+            aria-label="Tutup tampilan penuh"
+            onClick={() => setIsLightboxOpen(false)}
+          >
+            <CloseIcon />
+          </button>
+
+          <button
+            type="button"
+            className="wedding-lightbox__navigation wedding-lightbox__navigation--left"
+            aria-label="Foto sebelumnya"
+            onClick={(event) => {
+              event.stopPropagation();
+              previousImage();
+            }}
+          >
+            <ChevronLeftIcon />
+          </button>
+
+          <div
+            className="wedding-lightbox__content"
+            onClick={(event) => event.stopPropagation()}
+          >
+            <img
+              key={`lightbox-${activeImage.id}`}
+              src={activeImage.src}
+              alt={activeImage.alt}
+              draggable={false}
+            />
+
+            {showCaption && activeImage.caption && (
+              <div className="wedding-lightbox__caption">
+                <p>{activeImage.caption}</p>
+                <span>
+                  {activeIndex + 1} / {images.length}
+                </span>
+              </div>
+            )}
+          </div>
+
+          <button
+            type="button"
+            className="wedding-lightbox__navigation wedding-lightbox__navigation--right"
+            aria-label="Foto berikutnya"
+            onClick={(event) => {
+              event.stopPropagation();
+              nextImage();
+            }}
+          >
+            <ChevronRightIcon />
+          </button>
+        </div>
+      )}
+    </>
   );
-};
+}
+
+function ChevronLeftIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      aria-hidden="true"
+    >
+      <path
+        d="M15 18 9 12l6-6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ChevronRightIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      aria-hidden="true"
+    >
+      <path
+        d="m9 18 6-6-6-6"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.8"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function ExpandIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="20"
+      height="20"
+      aria-hidden="true"
+    >
+      <path
+        d="M8 3H3v5M16 3h5v5M8 21H3v-5M16 21h5v-5"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      />
+    </svg>
+  );
+}
+
+function CloseIcon() {
+  return (
+    <svg
+      viewBox="0 0 24 24"
+      width="24"
+      height="24"
+      aria-hidden="true"
+    >
+      <path
+        d="M6 6l12 12M18 6 6 18"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="1.7"
+        strokeLinecap="round"
+      />
+    </svg>
+  );
+}

@@ -3,7 +3,7 @@ import { weddingData } from "../data/wedding";
 import left from "../assets/left.png";
 import { FaInstagram } from "react-icons/fa";
 import Audio from "../components/Audio";
-// import { Gallery } from "../components/Galery";
+import Gallery from "../components/Galery";
 import WeddingEvent from "../components/WeddingEvent";
 import Swipper from "../components/Swipper";
 import RSVP from "../components/RSVP";
@@ -12,6 +12,58 @@ import GiftCard from "../components/GiftCard";
 // import AutoScrollPage from "../components/AutoScrollPage";
 import ThankYouSection from "../components/ThankYouSection";
 import { useState, useEffect } from "react";
+interface GalleryImage {
+    id: string | number;
+    src: string;
+    thumbnail?: string;
+    alt: string;
+    caption?: string;
+}
+const weddingPhotos: GalleryImage[] = [
+    {
+        id: 1,
+        src: "https://wedding-fajri.s3.nevaobjects.id/hero.jpg",
+        thumbnail: "https://wedding-fajri.s3.nevaobjects.id/hero.jpg",
+        alt: "",
+        caption: "",
+    },
+    {
+        id: 2,
+        src: "https://wedding-fajri.s3.nevaobjects.id/1.jpeg",
+        thumbnail: "https://wedding-fajri.s3.nevaobjects.id/1.jpeg",
+        alt: "",
+        caption: "",
+    },
+    {
+        id: 3,
+        src: "https://wedding-fajri.s3.nevaobjects.id/3.jpeg",
+        thumbnail: "https://wedding-fajri.s3.nevaobjects.id/3.jpeg",
+        alt: "",
+        caption: "",
+    },
+    {
+        id: 4,
+        src: "https://wedding-fajri.s3.nevaobjects.id/4.jpeg",
+        thumbnail: "https://wedding-fajri.s3.nevaobjects.id/4.jpeg",
+        alt: "",
+        caption: "",
+    },
+    {
+        id: 5,
+        src: "https://wedding-fajri.s3.nevaobjects.id/5.jpeg",
+        thumbnail: "https://wedding-fajri.s3.nevaobjects.id/5.jpeg",
+        alt: "",
+        caption: "",
+    },
+    {
+        id: 6,
+        src: "https://wedding-fajri.s3.nevaobjects.id/6.jpeg",
+        thumbnail: "https://wedding-fajri.s3.nevaobjects.id/6.jpeg",
+        alt: "",
+        caption: "",
+    },
+];
+
 interface CalendarDay {
     day: string;
     date: string;
@@ -383,14 +435,18 @@ export default function Hero() {
                     </div>
                 </div>
             </motion.div>
-            {/* <div className=" p-2 pb-[100px] " >
+            <div className=" p-2 pb-[100px] " >
                 <div className="w-full pb-6 text-center mt-5">
                     <div className="text-white text-4xl italic" style={{ fontFamily: "August Script" }}>
                         Our Galery
                     </div>
                 </div>
-                <Gallery />
-            </div> */}
+                <Gallery
+                    images={weddingPhotos}
+                    initialIndex={0}
+                    showCaption
+                />
+            </div>
             <div className=" p-2 pb-[100px] " >
                 <div className="w-full pb-6 text-center mt-5">
                     <div className=" mb-4 text-2xl italic text-white" style={{ fontFamily: "August Script" }}>
