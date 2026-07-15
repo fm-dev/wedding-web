@@ -27,7 +27,7 @@ const stories = [
     },
     {
         title: "Wedding Day",
-        image: "https://wedding-fajri.s3.nevaobjects.id/z16oluuzkmc3mwtqshco.webp",
+        image: "https://wedding-fajri.s3.nevaobjects.id/fadfadf.jpeg",
         desc: "Hari bahagia yang dinanti.",
     },
 ];

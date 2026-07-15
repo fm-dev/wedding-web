@@ -9,13 +9,103 @@ import WeddingEvent from "../components/WeddingEvent";
 import Swipper from "../components/Swipper";
 import RSVP from "../components/RSVP";
 import GiftCard from "../components/GiftCard";
-import 'aos/dist/aos.css';
 // import { useEffect } from "react";
 // import AutoScrollPage from "../components/AutoScrollPage";
 import ThankYouSection from "../components/ThankYouSection";
 import { useState, useEffect } from "react";
+interface CalendarDay {
+    day: string;
+    date: string;
+    selected?: boolean;
+    muted?: boolean;
+}
+interface WeddingEventDetail {
+    title: string;
+    date: string;
+    time: string;
+    venue: string;
+    address: string;
+}
+interface WeddingEventProps {
+    month: string;
+    calendarDays: CalendarDay[];
+    events: WeddingEventDetail[];
+    mapUrl?: string;
+    mapEmbedUrl?: string;
+}
+const weddingSchedules: WeddingEventProps[] = [
+    {
+        month: "JULI 2026",
+        calendarDays: [
+            {
+                day: "MINGGU",
+                date: "26",
+            },
+            {
+                day: "SENIN",
+                date: "27",
+                selected: true,
+            },
+            {
+                day: "SELASA",
+                date: "28",
+            },
+        ],
+        events: [
+            {
+                title: "Akad Nikah",
+                date: "Senin, 27 Juli 2026",
+                time: "Pukul 09.00 WIB",
+                venue: "Rumah Mempelai Wanita",
+                address:
+                    "Jl. Rawa Putaran, RT 01, RW 07, Peranap, Indragiri Hulu, Riau, Indonesia.",
+            },
+            {
+                title: "Resepsi",
+                date: "Senin, 27 Juli 2026",
+                time: "Pukul 10.00 WIB s.d. selesai",
+                venue: "Rumah Mempelai Wanita",
+                address:
+                    "Jl. Rawa Putaran, RT 01, RW 07, Peranap, Indragiri Hulu, Riau, Indonesia.",
+            },
+        ],
+        mapUrl: "https://maps.app.goo.gl/agDSoRBU3eCr6jqo8",
+        mapEmbedUrl:
+            "https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d4744.52013328137!2d101.96176658795906!3d-0.5263405067505245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1780834458242!5m2!1sid!2sid",
+    },
+    {
+        month: "AGUSTUS 2026",
+        calendarDays: [
+            {
+                day: "JUMAT",
+                date: "31",
+                muted: true,
+            },
+            {
+                day: "SABTU",
+                date: "01",
+                selected: true,
+            },
+            {
+                day: "MINGGU",
+                date: "02",
+            },
+        ],
+        events: [
+            {
+                title: "Resepsi",
+                date: "Sabtu, 01 Agustus 2026",
+                time: "Pukul 10.00 WIB s.d. selesai",
+                venue: "Rumah Mempelai Pria",
+                address:
+                    "Gg. Puyuh, Air Jamban, Kec. Mandau, Kabupaten Bengkalis, Riau 28784",
+            },
+        ],
+        mapUrl: "https://maps.app.goo.gl/YYrSYftcpoxxQzKx5",
+    },
+];
 export default function Hero() {
-    
+
     const [guest, setGuest] = useState("");
 
     useEffect(() => {
@@ -211,7 +301,7 @@ export default function Hero() {
                 transition={{ duration: 1 }}
 
             >
-                <div  className="h-[300px] flex flex-col justify-end px-10 pb-6 text-center">
+                <div className="h-[300px] flex flex-col justify-end px-10 pb-6 text-center">
 
                     <div
                         className="text-white text-3xl italic text-left"
@@ -225,7 +315,7 @@ export default function Hero() {
                 </div>
 
                 <div className="bg-gradient-to-b from-[#fffaf6] via-[#fdf4ee] to-[#f8ebe2] px-10">
-                    <div  className="text-[#5b0000] text-[160px] leading-none -mt-10 text-center">
+                    <div className="text-[#5b0000] text-[160px] leading-none -mt-10 text-center">
                         VE
                     </div>
                     <div
@@ -316,83 +406,15 @@ export default function Hero() {
 
                 <Swipper />
             </div>
-            <div className=" p-2 pb-[100px] bg-gradient-to-b from-[#fffaf6] via-[#fdf4ee] to-[#f8ebe2]">
-                <div className=" pb-6 text-center mt-5">
-                    <div className=" mb-4 text-2xl italic" style={{ fontFamily: "August Script" }}>
-                        Jangna Lupa
-                    </div>
-                    <div
-                        className="text-4xl text-[#5b0000] font-bold"
-                        style={{ fontFamily: "TheSeasonsRegular" }}>
-                        WEDDING SCHEDULE
-                    </div>
-                    <div
-                        className=" mt-2 text-2xl text-[#5b0000] "
-                        style={{ fontFamily: "TheSeasonsRegular" }}>
-                        <CountDown />
-                    </div>
-                    <div
-                        className=" mt-[10%] text-[#5b0000]  p-4 "
-                        style={{ fontFamily: "TheSeasonsRegular", }}
-                    >
-                        <div className="mt-3 ">
-                            <WeddingEvent />
-                            {/* <div className="font-bold text-3xl">Akad Nikah</div>
-                            <div className="text-xl">Senin, 27 Juli 2026</div>
-                            <div className="text-xl">Pukul 09.00 WIB</div>
-                            <div className="text-xl font-bold">Rumah Mempelai Wanita</div>
-                            <div className="text-sm">Jl. Merdeka No. 123</div> */}
-                        </div>
-                        <a target="_blank" href='https://maps.app.goo.gl/agDSoRBU3eCr6jqo8' className="mt-5 bg-[#3a0000] text-white px-6 py-3 tracking-[2px] text-sm hover:opacity-90 transition">
-                            SEE LOCATION
-                        </a>
-                        <div className="mt-10 space-y-2">
-
-                            <h2 className="text-3xl font-serif">
-                                Resepsi
-                            </h2>
-
-                            <p className="text-lg">
-                                Senin, 27 Juli 2026
-                            </p>
-
-                            <p className="text-lg">
-                                Pukul 10.00 WIB s/d Selesai
-                            </p>
-
-                            <p className="font-semibold text-lg">
-                                Rumah Mempelai Wanita
-                            </p>
-
-                            <p className="text-sm leading-7 text-gray-700">
-                                Jl. Rawa Putaran, RT 01, RW 07,
-                                Peranap,Indragiri Hulu, RIAU,
-                                Indonesia.
-                            </p>
-
-                            {/* Button */}
-
-                        </div>
-                    </div>
-                    <div className="mt-10 w-full">
-                        <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d4744.52013328137!2d101.96176658795906!3d-0.5263405067505245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sid!2sid!4v1780834458242!5m2!1sid!2sid"
-                            width="100%"
-                            height="450"
-                            style={{ border: 0 }}
-                            allowFullScreen
-                            loading="lazy"
-                            referrerPolicy="no-referrer-when-downgrade"
-                            title="Lokasi Acara"
-                        />
-                    </div>
-
-
-
-                </div>
-
-
+            <div className="">
+                {weddingSchedules.map((schedule) => (
+                    <WeddingEvent
+                        key={`${schedule.month}-${schedule.events[0]?.title}`}
+                        {...schedule}
+                    />
+                ))}
             </div>
+
             <div>
                 <GiftCard />
             </div>
