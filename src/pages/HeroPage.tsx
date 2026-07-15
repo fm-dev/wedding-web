@@ -17,7 +17,7 @@ import Typewriter from "typewriter-effect";
 import ThankYouSection from "../components/ThankYouSection";
 import { useState, useEffect } from "react";
 export default function Hero() {
-    AOS.init({ once: false, duration: 1000, })
+    AOS.init({ once: true, duration: 1000, })
     const [guest, setGuest] = useState("");
 
     useEffect(() => {
@@ -215,7 +215,7 @@ export default function Hero() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 transition={{ duration: 1 }}
-                
+
             >
                 <div data-aos="fade-right" className="h-[300px] flex flex-col justify-end px-10 pb-6 text-center">
 
@@ -261,12 +261,16 @@ export default function Hero() {
                         >
                             <Typewriter
                                 options={{
-                                    strings: ["Dea Ayu Ananda"],
-                                    autoStart: true,
-                                    loop: true,
-
+                                    delay: 70,
+                                    cursor: "|",
+                                }}
+                                onInit={(typewriter) => {
+                                    typewriter
+                                        .typeString("Dea Ayu Ananda")
+                                        .start();
                                 }}
                             />
+                            
 
                         </div>
                         <div data-aos="zoom-in-right">
@@ -295,10 +299,13 @@ export default function Hero() {
                         >
                             <Typewriter
                                 options={{
-                                    strings: ["M.Fajri Afriyansyah"],
-                                    autoStart: true,
-                                    loop: true,
-
+                                    delay: 70,
+                                    cursor: "|",
+                                }}
+                                onInit={(typewriter) => {
+                                    typewriter
+                                        .typeString("M. Fajri Afriyansyah")
+                                        .start();
                                 }}
                             />
                         </div>
