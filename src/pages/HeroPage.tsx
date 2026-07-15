@@ -12,7 +12,6 @@ import GiftCard from "../components/GiftCard";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
 // import { useEffect } from "react";
-import Typewriter from "typewriter-effect";
 // import AutoScrollPage from "../components/AutoScrollPage";
 import ThankYouSection from "../components/ThankYouSection";
 import { useState, useEffect } from "react";
@@ -259,19 +258,7 @@ export default function Hero() {
                             className="text-3xl text-[#5b0000] font-bold"
                             style={{ fontFamily: "TheSeasonsRegular" }}
                         >
-                            <Typewriter
-                                options={{
-                                    delay: 70,
-                                    cursor: "|",
-                                }}
-                                onInit={(typewriter) => {
-                                    typewriter
-                                        .typeString("Dea Ayu Ananda")
-                                        .start();
-                                }}
-                            />
-                            
-
+                            Dea Ayu Ananda
                         </div>
                         <div data-aos="zoom-in-right">
                             <a target="_blank" href="https://www.instagram.com/deayuananda?igsh=MWxpajVuZWlxNTV6dw==" className="text-[#5b0000] text-xl flex items-center">
@@ -297,17 +284,7 @@ export default function Hero() {
                             className="text-3xl text-[#5b0000] font-bold text-right"
                             style={{ fontFamily: "TheSeasonsRegular" }}
                         >
-                            <Typewriter
-                                options={{
-                                    delay: 70,
-                                    cursor: "|",
-                                }}
-                                onInit={(typewriter) => {
-                                    typewriter
-                                        .typeString("M. Fajri Afriyansyah")
-                                        .start();
-                                }}
-                            />
+                            M. Fajri Afriyansyah
                         </div>
                         <div data-aos="zoom-in-left">
 
