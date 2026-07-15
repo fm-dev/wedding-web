@@ -4,7 +4,6 @@ import { Autoplay, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 
-import first from "../assets/gallery/first.jpeg"
 const stories = [
     {
         title: "First Meet",
