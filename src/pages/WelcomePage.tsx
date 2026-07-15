@@ -4,7 +4,6 @@ import React from "react"
 import HeroPage from "../pages/HeroPage"
 import Typewriter from "typewriter-effect";
 import { useState, useEffect } from "react";
-import BubbleBackground from "../components/BubbleBackground";
 export default function Welcome() {
   const [flagHeroPage, setFlagHeroPage] = React.useState(false);
   const [guest, setGuest] = useState("");
@@ -22,7 +21,6 @@ export default function Welcome() {
     (!flagHeroPage) ? (
       <section className="relative min-h-screen overflow-hidden">
         {/* Background image full */}
-        <BubbleBackground />
         <img
           src="https://wedding-fajri.s3.nevaobjects.id/hero.jpg"
           alt="Wedding Background"
