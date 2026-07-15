@@ -307,3 +307,17 @@ body {
   transform: translateY(-5px);
   box-shadow: 0 6px 14px rgba(0,0,0,0.3);
 }
+#wedding-bubbles {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+#wedding-bubbles canvas {
+  width: 100% !important;
+  height: 100% !important;
+}

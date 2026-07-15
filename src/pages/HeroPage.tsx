@@ -1,7 +1,5 @@
 import { motion } from "framer-motion";
 import { weddingData } from "../data/wedding";
-import ayangImage from "../assets/ayang.jpg";
-import iyanImage from "../assets/iyan.jpg";
 import left from "../assets/left.png";
 import { FaInstagram } from "react-icons/fa";
 import Audio from "../components/Audio";
@@ -16,10 +14,13 @@ import 'aos/dist/aos.css';
 // import { useEffect } from "react";
 import Typewriter from "typewriter-effect";
 // import AutoScrollPage from "../components/AutoScrollPage";
+import BubbleBackground from "../components/BubbleBackground";
+import ThankYouSection from "../components/ThankYouSection";
 export default function Hero() {
     AOS.init({ once: false, duration: 1000, })
     return (
         <div className="relative">
+            <BubbleBackground />
             {/* Musik Icon Fixed di pojok kanan bawah */}
             {/* <AutoScrollPage /> */}
             <Audio />
@@ -99,7 +100,7 @@ export default function Hero() {
                     <div className="text-white text-[160px] leading-none">LO</div>
                 </div>
 
-                <div className="bg-[#FEFEF9] px-10">
+                <div className="bg-gradient-to-b from-[#fffaf6] via-[#fdf4ee] to-[#f8ebe2] px-10">
                     <div data-aos="fade-left" className="text-[#5b0000] text-[160px] leading-none -mt-10 text-center">
                         VE
                     </div>
@@ -119,7 +120,7 @@ export default function Hero() {
                     </div>
                     <div className="mt-[100px]">
                         <img
-                            src={ayangImage}
+                            src="https://wedding-fajri.s3.nevaobjects.id/lwfmvuggr4mn4iwkzuz3.webp"
                             alt="Wedding Background"
                             className="w-full h-[650px] object-cover"
                             data-aos="fade-down-right"
@@ -139,10 +140,10 @@ export default function Hero() {
 
                         </div>
                         <div data-aos="zoom-in-right">
-                            <div className="text-[#5b0000] text-xl flex items-center">
+                            <a target="_blank" href="https://www.instagram.com/deayuananda?igsh=MWxpajVuZWlxNTV6dw==" className="text-[#5b0000] text-xl flex items-center">
                                 <FaInstagram className="" />
                                 Deaayuananda
-                            </div>
+                            </a>
                             <div className="text-xl">
                                 <span className="text-[#5b0000]" style={{ fontFamily: "TheSeasonsRegular" }}>
                                     Anak ke dua dari
@@ -153,7 +154,7 @@ export default function Hero() {
                     </div>
                     <div className="mt-[50px] pb-[100px] ">
                         <img
-                            src={iyanImage}
+                            src="https://wedding-fajri.s3.nevaobjects.id/iicgiqfxyynudgg4gjll.webp"
                             alt="Wedding Background"
                             className="w-full h-[650px] object-cover"
                             data-aos="fade-down-left"
@@ -173,10 +174,10 @@ export default function Hero() {
                         </div>
                         <div data-aos="zoom-in-left">
 
-                            <div className="text-[#5b0000] text-xl flex items-center text-right">
+                            <a target="_blank" href="https://www.instagram.com/fajriafriyansyah_?igsh=MWxpajVuZWlxNTV6dw%3D%3D"  className="text-[#5b0000] text-xl flex items-center text-right">
                                 <FaInstagram className="" />
                                 fajriafriyansyah_
-                            </div>
+                            </a>
                             <div className="text-xl text-right ">
                                 <span className="text-[#5b0000]" style={{ fontFamily: "TheSeasonsRegular" }}>
                                     Anak ke pertama dari
@@ -189,7 +190,7 @@ export default function Hero() {
             </motion.div>
             <div className=" p-2 pb-[100px] " data-aos="fade-up">
                 <div className="w-full pb-6 text-center mt-5">
-                    <div  className="text-white text-4xl italic" style={{ fontFamily: "August Script" }}>
+                    <div className="text-white text-4xl italic" style={{ fontFamily: "August Script" }}>
                         Our Galery
                     </div>
                 </div>
@@ -197,7 +198,7 @@ export default function Hero() {
             </div>
             <div className=" p-2 pb-[100px] " >
                 <div className="w-full pb-6 text-center mt-5">
-                    <div  className=" mb-4 text-2xl italic text-white" style={{ fontFamily: "August Script" }}>
+                    <div className=" mb-4 text-2xl italic text-white" style={{ fontFamily: "August Script" }}>
                         Our Beloved
                     </div>
                     <div
@@ -209,7 +210,7 @@ export default function Hero() {
 
                 <Swipper />
             </div>
-            <div className=" p-2 pb-[100px] bg-[#FEFEF9]">
+            <div className=" p-2 pb-[100px] bg-gradient-to-b from-[#fffaf6] via-[#fdf4ee] to-[#f8ebe2]">
                 <div className=" pb-6 text-center mt-5">
                     <div className=" mb-4 text-2xl italic" style={{ fontFamily: "August Script" }}>
                         Jangna Lupa
@@ -242,7 +243,7 @@ export default function Hero() {
                         <div className="mt-10 space-y-2">
 
                             <h2 className="text-3xl font-serif">
-                                Reception
+                                Resepsi
                             </h2>
 
                             <p className="text-lg">
@@ -250,7 +251,7 @@ export default function Hero() {
                             </p>
 
                             <p className="text-lg">
-                                Pukul 09.00 WIB
+                                Pukul 10.00 WIB s/d Selesai
                             </p>
 
                             <p className="font-semibold text-lg">
@@ -258,8 +259,8 @@ export default function Hero() {
                             </p>
 
                             <p className="text-sm leading-7 text-gray-700">
-                                Jl. Merdeka No. 123, Jakarta Pusat,
-                                Daerah Khusus Ibukota Jakarta,
+                                Jl. Rawa Putaran, RT 01, RW 07,
+                                Peranap,Indragiri Hulu, RIAU,
                                 Indonesia.
                             </p>
 
@@ -289,8 +290,14 @@ export default function Hero() {
             <div>
                 <GiftCard />
             </div>
-            <div className=" p-2 ">
+            <div className=" p-2 bg-[#3d2115] ">
                 <RSVP />
+            </div>
+            <div>
+                <ThankYouSection
+                    brideName={weddingData.bride}
+                    groomName={weddingData.groom}
+                />
             </div>
 
         </div>

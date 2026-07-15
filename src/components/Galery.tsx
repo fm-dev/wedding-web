@@ -10,20 +10,7 @@ import 'lightgallery/css/lg-thumbnail.css';
 import lgZoom from 'lightgallery/plugins/zoom';
 import lgVideo from 'lightgallery/plugins/video';
 // import lgThumbnail from 'lightgallery/plugins/thumbnail';
-
 import fjGallery from 'flickr-justified-gallery';
-
-import image1 from '../assets/gallery/7R405836.jpg';
-import image2 from '../assets/gallery/7R405850.jpg';
-import image3 from '../assets/gallery/7R405781.jpg';
-import image4 from '../assets/gallery/7R405831.jpg';
-import image5 from '../assets/gallery/7R405975.jpg';
-import image6 from '../assets/gallery/7R405848.jpg';
-import image7 from '../assets/gallery/7R405849.jpg';
-import image8 from '../assets/gallery/7R405850.jpg';
-import image9 from '../assets/gallery/7R405940.jpg';
-// import image10 from '../assets/gallery/7R405945.jpg';
-// import image11 from '../assets/gallery/7R405966.jpg';
 export const Gallery = () => {
   useEffect(() => {
     fjGallery(document.querySelectorAll('.gallery'), {
@@ -59,12 +46,12 @@ export const Gallery = () => {
           data-pinterest-text="Pin it2"
           data-tweet-text="lightGallery slide  2"
           className="gallery__item"
-          data-src={image1}
-          data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@therawhunter' >Massimiliano Morosinotto </a></h4><p> Location - <a href='https://unsplash.com/s/photos/tre-cime-di-lavaredo%2C-italia'>Tre Cime di Lavaredo, Italia</a>This is the Way</p>"
+          data-src="https://wedding-fajri.s3.nevaobjects.id/nrimursjqvbyvbuzvsji.webp"
+          data-sub-html="<h4>Photo by - <a href=nrimursjqvbyvbuzvsji.webp' >Wedding </a></h4>"
         >
           <img
             className="img-responsive"
-            src={image1}
+            src="https://wedding-fajri.s3.nevaobjects.id/nrimursjqvbyvbuzvsji.webp"
           />
         </a>
         <a
@@ -72,12 +59,11 @@ export const Gallery = () => {
           data-pinterest-text="Pin it3"
           data-tweet-text="lightGallery slide  4"
           className="gallery__item"
-          data-src={image2}
-          data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@thesaboo' >Sascha Bosshard </a></h4><p> Location - <a href='https://unsplash.com/s/photos/pizol%2C-mels%2C-schweiz'>Pizol, Mels, Schweiz</a></p>"
+          data-src="https://wedding-fajri.s3.nevaobjects.id/b6hgvbszjfghbwybfwpg.webp"
         >
           <img
             className="img-responsive"
-            src={image2}
+            src="https://wedding-fajri.s3.nevaobjects.id/b6hgvbszjfghbwybfwpg.webp"
           />
         </a>
         <a
@@ -85,12 +71,11 @@ export const Gallery = () => {
           data-pinterest-text="Pin it3"
           data-tweet-text="lightGallery slide  4"
           className="gallery__item"
-          data-src={image3}
-          data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@yusufevli' >Yusuf Evli </a></h4><p> Foggy Road</p>"
+          data-src="https://wedding-fajri.s3.nevaobjects.id/q0oezvlxhthdlgpyhzpy.webp"
         >
           <img
             className="img-responsive"
-            src={image3}
+            src="https://wedding-fajri.s3.nevaobjects.id/q0oezvlxhthdlgpyhzpy.webp"
           />
         </a>
         <a
@@ -98,12 +83,11 @@ export const Gallery = () => {
           data-pinterest-text="Pin it3"
           data-tweet-text="lightGallery slide  4"
           className="gallery__item"
-          data-src={image4}
-          data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@flovayn' >Jay Mantri</a></h4><p>  Misty shroud over a forest</p>"
+          data-src="https://wedding-fajri.s3.nevaobjects.id/z16oluuzkmc3mwtqshco.webp"
         >
           <img
             className="img-responsive"
-            src={image4}
+            src="https://wedding-fajri.s3.nevaobjects.id/z16oluuzkmc3mwtqshco.webp"
           />
         </a>
         <a
@@ -111,12 +95,12 @@ export const Gallery = () => {
           data-pinterest-text="Pin it3"
           data-tweet-text="lightGallery slide  4"
           className="gallery__item"
-          data-src={image5}
-          data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@flovayn' >Florian van Duyn</a></h4><p>Location - <a href='Bled, Slovenia'>Bled, Slovenia</a> </p>"
+          data-src="https://wedding-fajri.s3.nevaobjects.id/c1uv7cddikrv96eykn1v.webp"
+          // data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@flovayn' >Florian van Duyn</a></h4><p>Location - <a href='Bled, Slovenia'>Bled, Slovenia</a> </p>"
         >
           <img
             className="img-responsive"
-            src={image5}
+            src="https://wedding-fajri.s3.nevaobjects.id/c1uv7cddikrv96eykn1v.webp"
           />
         </a>
         <a
@@ -124,12 +108,12 @@ export const Gallery = () => {
           data-pinterest-text="Pin it2"
           data-tweet-text="lightGallery slide  2"
           className="gallery__item"
-          data-src={image9}
-          data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@therawhunter' >Massimiliano Morosinotto </a></h4><p> Location - <a href='https://unsplash.com/s/photos/tre-cime-di-lavaredo%2C-italia'>Tre Cime di Lavaredo, Italia</a>This is the Way</p>"
+          data-src="https://wedding-fajri.s3.nevaobjects.id/eisztlp8fjvyxtzgpnyu.webp"
+          // data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@therawhunter' >Massimiliano Morosinotto </a></h4><p> Location - <a href='https://unsplash.com/s/photos/tre-cime-di-lavaredo%2C-italia'>Tre Cime di Lavaredo, Italia</a>This is the Way</p>"
         >
           <img
             className="img-responsive"
-            src={image9}
+            src="https://wedding-fajri.s3.nevaobjects.id/eisztlp8fjvyxtzgpnyu.webp"
           />
         </a>
         <a
@@ -137,12 +121,12 @@ export const Gallery = () => {
           data-pinterest-text="Pin it3"
           data-tweet-text="lightGallery slide  4"
           className="gallery__item"
-          data-src={image8}
-          data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@thesaboo' >Sascha Bosshard </a></h4><p> Location - <a href='https://unsplash.com/s/photos/pizol%2C-mels%2C-schweiz'>Pizol, Mels, Schweiz</a></p>"
+          data-src="https://wedding-fajri.s3.nevaobjects.id/b6hgvbszjfghbwybfwpg.webp"
+          // data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@thesaboo' >Sascha Bosshard </a></h4><p> Location - <a href='https://unsplash.com/s/photos/pizol%2C-mels%2C-schweiz'>Pizol, Mels, Schweiz</a></p>"
         >
           <img
             className="img-responsive"
-            src={image8}
+            src="https://wedding-fajri.s3.nevaobjects.id/b6hgvbszjfghbwybfwpg.webp"
           />
         </a>
         <a
@@ -150,12 +134,12 @@ export const Gallery = () => {
           data-pinterest-text="Pin it3"
           data-tweet-text="lightGallery slide  4"
           className="gallery__item"
-          data-src={image7}
-          data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@yusufevli' >Yusuf Evli </a></h4><p> Foggy Road</p>"
+          data-src="https://wedding-fajri.s3.nevaobjects.id/hnjyhriidm2tx4rlga5s.webp"
+          // data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@yusufevli' >Yusuf Evli </a></h4><p> Foggy Road</p>"
         >
           <img
             className="img-responsive"
-            src={image7}
+            src="https://wedding-fajri.s3.nevaobjects.id/hnjyhriidm2tx4rlga5s.webp"
           />
         </a>
         <a
@@ -163,12 +147,12 @@ export const Gallery = () => {
           data-pinterest-text="Pin it3"
           data-tweet-text="lightGallery slide  4"
           className="gallery__item"
-          data-src={image6}
-          data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@yusufevli' >Yusuf Evli </a></h4><p> Foggy Road</p>"
+          data-src="https://wedding-fajri.s3.nevaobjects.id/n3zfkaee9tlbcva0pchh.webp"
+          // data-sub-html="<h4>Photo by - <a href='https://unsplash.com/@yusufevli' >Yusuf Evli </a></h4><p> Foggy Road</p>"
         >
           <img
             className="img-responsive"
-            src={image6}
+            src="https://wedding-fajri.s3.nevaobjects.id/n3zfkaee9tlbcva0pchh.webp"
           />
         </a>
       </LightGallery>

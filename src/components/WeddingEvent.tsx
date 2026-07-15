@@ -64,8 +64,8 @@ export default function WeddingEvent() {
                 </p>
 
                 <p className="text-sm leading-7 text-gray-700">
-                    Jl. Merdeka No. 123, Jakarta Pusat,
-                    Daerah Khusus Ibukota Jakarta,
+                    Jl. Rawa Putaran, RT 01, RW 07,
+                    Peranap,Indragiri Hulu, RIAU,
                     Indonesia.
                 </p>
 
