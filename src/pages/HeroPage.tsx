@@ -9,14 +9,13 @@ import WeddingEvent from "../components/WeddingEvent";
 import Swipper from "../components/Swipper";
 import RSVP from "../components/RSVP";
 import GiftCard from "../components/GiftCard";
-import AOS from 'aos';
 import 'aos/dist/aos.css';
 // import { useEffect } from "react";
 // import AutoScrollPage from "../components/AutoScrollPage";
 import ThankYouSection from "../components/ThankYouSection";
 import { useState, useEffect } from "react";
 export default function Hero() {
-    AOS.init({ once: true, duration: 1000, })
+    
     const [guest, setGuest] = useState("");
 
     useEffect(() => {
@@ -49,8 +48,7 @@ export default function Hero() {
                 <div className="absolute inset-0 z-10 flex flex-col items-center justify-between px-6 py-10 text-center text-white">
                     {/* Bagian atas */}
                     <div
-                        data-aos="fade-down"
-                        data-aos-duration="900"
+
                         className="w-full max-w-xl"
                     >
                         <p className="mb-4 text-xs font-medium uppercase tracking-[0.4em] text-white/80">
@@ -79,8 +77,6 @@ export default function Hero() {
 
                     {/* Bagian bawah: nama tamu */}
                     <div
-                        data-aos="fade-up"
-                        data-aos-duration="900"
                         className="w-full max-w-md"
                     >
                         <div className="rounded-[28px] border border-white/20 bg-black/25 px-6 py-5 shadow-2xl backdrop-blur-md">
@@ -216,7 +212,7 @@ export default function Hero() {
                 transition={{ duration: 1 }}
 
             >
-                <div data-aos="fade-right" className="h-[300px] flex flex-col justify-end px-10 pb-6 text-center">
+                <div  className="h-[300px] flex flex-col justify-end px-10 pb-6 text-center">
 
                     <div
                         className="text-white text-3xl italic text-left"
@@ -230,13 +226,12 @@ export default function Hero() {
                 </div>
 
                 <div className="bg-gradient-to-b from-[#fffaf6] via-[#fdf4ee] to-[#f8ebe2] px-10">
-                    <div data-aos="fade-left" className="text-[#5b0000] text-[160px] leading-none -mt-10 text-center">
+                    <div  className="text-[#5b0000] text-[160px] leading-none -mt-10 text-center">
                         VE
                     </div>
                     <div
                         className="text-[#5b0000] text-3xl italic text-right"
                         style={{ fontFamily: "August Script" }}
-                        data-aos="fade-left"
                     >
                         With You
                     </div>
@@ -252,7 +247,6 @@ export default function Hero() {
                             src="https://wedding-fajri.s3.nevaobjects.id/ayang.webp"
                             alt="Wedding Background"
                             className="w-full h-[650px] object-cover"
-                            data-aos="fade-down-right"
                         />
                         <div
                             className="text-3xl text-[#5b0000] font-bold"
@@ -260,7 +254,7 @@ export default function Hero() {
                         >
                             Dea Ayu Ananda
                         </div>
-                        <div data-aos="zoom-in-right">
+                        <div >
                             <a target="_blank" href="https://www.instagram.com/deayuananda?igsh=MWxpajVuZWlxNTV6dw==" className="text-[#5b0000] text-xl flex items-center">
                                 <FaInstagram className="" />
                                 Deaayuananda
@@ -278,7 +272,6 @@ export default function Hero() {
                             src="https://wedding-fajri.s3.nevaobjects.id/iicgiqfxyynudgg4gjll.webp"
                             alt="Wedding Background"
                             className="w-full h-[650px] object-cover"
-                            data-aos="fade-down-left"
                         />
                         <div
                             className="text-3xl text-[#5b0000] font-bold text-right"
@@ -286,7 +279,7 @@ export default function Hero() {
                         >
                             M. Fajri Afriyansyah
                         </div>
-                        <div data-aos="zoom-in-left">
+                        <div >
 
                             <a target="_blank" href="https://www.instagram.com/fajriafriyansyah_?igsh=MWxpajVuZWlxNTV6dw%3D%3D" className="text-[#5b0000] text-xl flex items-center text-right">
                                 <FaInstagram className="" />
@@ -302,7 +295,7 @@ export default function Hero() {
                     </div>
                 </div>
             </motion.div>
-            <div className=" p-2 pb-[100px] " data-aos="fade-up">
+            <div className=" p-2 pb-[100px] " >
                 <div className="w-full pb-6 text-center mt-5">
                     <div className="text-white text-4xl italic" style={{ fontFamily: "August Script" }}>
                         Our Galery
