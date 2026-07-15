@@ -4,7 +4,6 @@ import left from "../assets/left.png";
 import { FaInstagram } from "react-icons/fa";
 import Audio from "../components/Audio";
 import { Gallery } from "../components/Galery";
-import CountDown from "../components/CountDown";
 import WeddingEvent from "../components/WeddingEvent";
 import Swipper from "../components/Swipper";
 import RSVP from "../components/RSVP";

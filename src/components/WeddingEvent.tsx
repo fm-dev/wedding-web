@@ -26,7 +26,6 @@ export default function WeddingEvent({
     calendarDays,
     events,
     mapUrl,
-    mapEmbedUrl,
 }: WeddingEventProps) {
     return (
         <article className=" p-3 relative overflow-hidden  bg-[#fffaf6] ">
