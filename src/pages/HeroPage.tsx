@@ -3,7 +3,7 @@ import { weddingData } from "../data/wedding";
 import left from "../assets/left.png";
 import { FaInstagram } from "react-icons/fa";
 import Audio from "../components/Audio";
-import { Gallery } from "../components/Galery";
+// import { Gallery } from "../components/Galery";
 import WeddingEvent from "../components/WeddingEvent";
 import Swipper from "../components/Swipper";
 import RSVP from "../components/RSVP";
@@ -383,14 +383,14 @@ export default function Hero() {
                     </div>
                 </div>
             </motion.div>
-            <div className=" p-2 pb-[100px] " >
+            {/* <div className=" p-2 pb-[100px] " >
                 <div className="w-full pb-6 text-center mt-5">
                     <div className="text-white text-4xl italic" style={{ fontFamily: "August Script" }}>
                         Our Galery
                     </div>
                 </div>
                 <Gallery />
-            </div>
+            </div> */}
             <div className=" p-2 pb-[100px] " >
                 <div className="w-full pb-6 text-center mt-5">
                     <div className=" mb-4 text-2xl italic text-white" style={{ fontFamily: "August Script" }}>
