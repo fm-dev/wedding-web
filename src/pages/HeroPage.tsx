@@ -27,7 +27,6 @@ export default function Hero() {
         <div className="relative">
             {/* Musik Icon Fixed di pojok kanan bawah */}
             {/* <AutoScrollPage /> */}
-            <Audio />
 
             {/* Hero Image */}
             <div className="relative mx-auto h-[650px] w-full overflow-hidden">
@@ -406,6 +405,7 @@ export default function Hero() {
                     groomName={weddingData.groom}
                 />
             </div>
+            <Audio />
 
         </div>
     );
