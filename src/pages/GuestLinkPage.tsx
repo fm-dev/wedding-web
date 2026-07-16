@@ -32,7 +32,7 @@ export default function GuestLinkPage() {
     return `Assalamualaikum Warahmatullahi Wabarakatuh
 
 Tanpa mengurangi rasa hormat, perkenankan kami mengundang Bapak/Ibu/Saudara/i
-${name} untuk menghadiri acara kami.
+*${name}* untuk menghadiri acara kami.
 
 Berikut link undangan kami, untuk info lengkap dari acara bisa kunjungi :
 ${invitationUrl}
@@ -44,7 +44,7 @@ Mohon maaf perihal undangan hanya di bagikan melalui pesan ini.
 Terima kasih banyak atas perhatiannya.
 
 Salam Hormat
-Dea & Fajri`;
+*Dea & Fajri*`;
   }, [guestName, invitationUrl]);
 
   const copyToClipboard = async (
