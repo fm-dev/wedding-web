@@ -62,6 +62,20 @@ const weddingPhotos: GalleryImage[] = [
         alt: "",
         caption: "",
     },
+    {
+        id: 7,
+        src: "https://wedding-fajri.s3.nevaobjects.id/7.jpeg",
+        thumbnail: "https://wedding-fajri.s3.nevaobjects.id/7.jpeg",
+        alt: "",
+        caption: "",
+    },
+    {
+        id: 8,
+        src: "https://wedding-fajri.s3.nevaobjects.id/8.jpeg",
+        thumbnail: "https://wedding-fajri.s3.nevaobjects.id/8.jpeg",
+        alt: "",
+        caption: "",
+    },
 ];
 
 interface CalendarDay {
