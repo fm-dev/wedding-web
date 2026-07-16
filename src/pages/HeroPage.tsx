@@ -12,6 +12,7 @@ import GiftCard from "../components/GiftCard";
 // import AutoScrollPage from "../components/AutoScrollPage";
 import ThankYouSection from "../components/ThankYouSection";
 import { useState, useEffect } from "react";
+import CountDown from "../components/CountDown";
 interface GalleryImage {
     id: string | number;
     src: string;
@@ -450,6 +451,7 @@ export default function Hero() {
                 </div>
             </motion.div>
             <div className=" p-2 pb-[100px] " >
+
                 <div className="w-full pb-6 text-center mt-5">
                     <div className="text-white text-4xl italic" style={{ fontFamily: "August Script" }}>
                         Our Galery
@@ -476,6 +478,21 @@ export default function Hero() {
                 <Swipper />
             </div>
             <div className="">
+                <div className="bg-[#fffaf6] relative w-full overflow-hidden bg-[#4A2412] px-4 py-7 sm:px-8 sm:py-9">
+                    {/* Dekorasi latar */}
+                    <div className="pointer-events-none absolute -right-12 -top-16 h-40 w-40 rounded-full border border-white/10" />
+                    <div className="pointer-events-none absolute -right-5 -top-8 h-28 w-28 rounded-full border border-white/10" />
+
+                    <div className="relative mx-auto max-w-3xl text-center">
+                        <p className="text-[10px] font-medium uppercase tracking-[0.35em] text-[#E8C9B8] sm:text-xs">
+                            Menuju Hari Bahagia
+                        </p>
+
+                        <div className="mt-5 text-xl" style={{ fontFamily: "TheSeasonsRegular" }}>
+                            <CountDown />
+                        </div>
+                    </div>
+                </div>
                 {weddingSchedules.map((schedule) => (
                     <WeddingEvent
                         key={`${schedule.month}-${schedule.events[0]?.title}`}
