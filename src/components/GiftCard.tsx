@@ -22,10 +22,10 @@ const accounts: GiftAccount[] = [
     number: "1891196330",
   },
   {
-    id: "Bri-dea",
-    bank: "BRI",
+    id: "Mandiri-dea",
+    bank: "Mandiri",
     name: "Dea Ayu Ananda",
-    number: "161901009755505",
+    number: "1080031914410",
   },
 ];
 
