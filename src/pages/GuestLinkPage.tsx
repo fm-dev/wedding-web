@@ -96,18 +96,18 @@ Salam Hormat
   };
 
   return (
-    <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-rose-50 via-white to-amber-50 px-4 py-10">
-      <section className="w-full max-w-xl rounded-3xl border border-rose-100 bg-white/90 p-6 shadow-xl backdrop-blur md:p-8">
+    <main className="flex min-h-screen items-center justify-center bg-gradient-to-br from-rose-50 dark:from-stone-950 via-white dark:via-stone-900 to-amber-50 dark:to-stone-950 px-4 py-10">
+      <section className="w-full max-w-xl rounded-3xl border border-rose-100 dark:border-stone-700 bg-white/90 dark:bg-stone-900/90 p-6 shadow-xl backdrop-blur md:p-8">
         <div className="mb-8 text-center">
-          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-rose-500">
+          <p className="mb-2 text-sm font-semibold uppercase tracking-[0.2em] text-rose-500 dark:text-rose-300">
             Wedding Invitation
           </p>
 
-          <h1 className="text-3xl font-bold text-slate-800">
+          <h1 className="text-3xl font-bold text-slate-800 dark:text-stone-100">
             Buat Link Tamu
           </h1>
 
-          <p className="mt-3 text-sm leading-6 text-slate-500">
+          <p className="mt-3 text-sm leading-6 text-slate-500 dark:text-stone-300">
             Masukkan nama tamu untuk membuat link dan pesan
             undangan personal.
           </p>
@@ -120,7 +120,7 @@ Salam Hormat
           <div>
             <label
               htmlFor="guestName"
-              className="mb-2 block text-sm font-semibold text-slate-700"
+              className="mb-2 block text-sm font-semibold text-slate-700 dark:text-stone-200"
             >
               Nama Tamu
             </label>
@@ -132,14 +132,14 @@ Salam Hormat
               onChange={handleGuestChange}
               placeholder="Contoh: Dea Ayu Ananda"
               autoComplete="off"
-              className="w-full rounded-xl border border-slate-200 bg-white px-4 py-3 text-slate-800 outline-none transition placeholder:text-slate-400 focus:border-rose-400 focus:ring-4 focus:ring-rose-100"
+              className="w-full rounded-xl border border-slate-200 dark:border-stone-600 bg-white dark:bg-stone-900 px-4 py-3 text-slate-800 dark:text-stone-100 outline-none transition placeholder:text-slate-400 focus:border-rose-400 focus:ring-4 focus:ring-rose-100 dark:focus:ring-rose-900"
             />
           </div>
 
           <div>
             <label
               htmlFor="invitationUrl"
-              className="mb-2 block text-sm font-semibold text-slate-700"
+              className="mb-2 block text-sm font-semibold text-slate-700 dark:text-stone-200"
             >
               Link Undangan
             </label>
@@ -152,7 +152,7 @@ Salam Hormat
                 readOnly
                 placeholder="Link undangan akan tampil di sini"
                 onClick={(event) => event.currentTarget.select()}
-                className="min-w-0 flex-1 rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm text-slate-700 outline-none"
+                className="min-w-0 flex-1 rounded-xl border border-slate-200 dark:border-stone-600 bg-slate-50 dark:bg-stone-800 px-4 py-3 text-sm text-slate-700 dark:text-stone-200 outline-none"
               />
 
               <button
@@ -161,7 +161,7 @@ Salam Hormat
                 onClick={() =>
                   copyToClipboard(invitationUrl, "link")
                 }
-                className="shrink-0 rounded-xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm font-semibold text-rose-600 transition hover:bg-rose-100 disabled:cursor-not-allowed disabled:border-slate-200 disabled:bg-slate-100 disabled:text-slate-400"
+                className="shrink-0 rounded-xl border border-rose-200 dark:border-rose-800 bg-rose-50 dark:bg-rose-950 px-4 py-3 text-sm font-semibold text-rose-600 dark:text-rose-200 transition hover:bg-rose-100 dark:hover:bg-rose-900 disabled:cursor-not-allowed disabled:border-slate-200 dark:disabled:border-stone-700 disabled:bg-slate-100 dark:disabled:bg-stone-800 disabled:text-slate-400"
               >
                 {copyStatus === "link"
                   ? "Tersalin"
@@ -173,7 +173,7 @@ Salam Hormat
           <div>
             <label
               htmlFor="invitationMessage"
-              className="mb-2 block text-sm font-semibold text-slate-700"
+              className="mb-2 block text-sm font-semibold text-slate-700 dark:text-stone-200"
             >
               Pesan Undangan
             </label>
@@ -185,14 +185,14 @@ Salam Hormat
               rows={16}
               placeholder="Pesan undangan akan tampil di sini"
               onClick={(event) => event.currentTarget.select()}
-              className="w-full resize-y rounded-xl border border-slate-200 bg-slate-50 px-4 py-3 text-sm leading-6 text-slate-700 outline-none"
+              className="w-full resize-y rounded-xl border border-slate-200 dark:border-stone-600 bg-slate-50 dark:bg-stone-800 px-4 py-3 text-sm leading-6 text-slate-700 dark:text-stone-200 outline-none"
             />
           </div>
 
           {error && (
             <p
               role="alert"
-              className="rounded-xl bg-red-50 px-4 py-3 text-sm text-red-600"
+              className="rounded-xl bg-red-50 dark:bg-red-950 px-4 py-3 text-sm text-red-600 dark:text-red-200"
             >
               {error}
             </p>
@@ -201,7 +201,7 @@ Salam Hormat
           {copyStatus && (
             <p
               role="status"
-              className="rounded-xl bg-emerald-50 px-4 py-3 text-sm text-emerald-700"
+              className="rounded-xl bg-emerald-50 dark:bg-emerald-950 px-4 py-3 text-sm text-emerald-700 dark:text-emerald-200"
             >
               {copyStatus === "link"
                 ? "Link undangan berhasil disalin."
@@ -212,7 +212,7 @@ Salam Hormat
           <button
             type="submit"
             disabled={!guestName.trim()}
-            className="w-full rounded-xl bg-rose-500 px-5 py-3 font-semibold text-white shadow-lg shadow-rose-200 transition hover:bg-rose-600 focus:outline-none focus:ring-4 focus:ring-rose-200 disabled:cursor-not-allowed disabled:bg-slate-300 disabled:shadow-none"
+            className="w-full rounded-xl bg-rose-500 px-5 py-3 font-semibold text-white shadow-lg shadow-rose-200 dark:shadow-black/20 transition hover:bg-rose-600 focus:outline-none focus:ring-4 focus:ring-rose-200 dark:focus:ring-rose-900 disabled:cursor-not-allowed disabled:bg-slate-300 dark:disabled:bg-stone-700 disabled:shadow-none"
           >
             {copyStatus === "message"
               ? "Pesan Tersalin"

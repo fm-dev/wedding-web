@@ -98,7 +98,7 @@ export default function WeddingGallery({
 
     [images[previousIndex], images[nextIndex]].forEach((image) => {
       const preloadImage = new Image();
-      preloadImage.src = image.src;
+      preloadImage.src = image.thumbnail ?? image.src;
     });
 
     thumbnailRefs.current[activeIndex]?.scrollIntoView({
@@ -169,7 +169,9 @@ export default function WeddingGallery({
                   ? "wedding-gallery__main-image--visible"
                   : ""
               }`}
-              src={activeImage.src}
+              src={activeImage.thumbnail ?? activeImage.src}
+              loading="lazy"
+              decoding="async"
               alt={activeImage.alt}
               draggable={false}
               onLoad={() => setIsImageLoaded(true)}
@@ -244,6 +246,7 @@ export default function WeddingGallery({
                     src={image.thumbnail ?? image.src}
                     alt=""
                     loading="lazy"
+                    decoding="async"
                     draggable={false}
                   />
 

@@ -12,7 +12,7 @@ export default function ThankYouSection({
   message = "Merupakan suatu kebahagiaan dan kehormatan bagi kami apabila Bapak/Ibu/Saudara/i berkenan hadir serta memberikan doa restu kepada kami.",
 }: ThankYouSectionProps) {
   return (
-    <section className="relative overflow-hidden bg-gradient-to-b from-[#fffaf6] via-[#fdf4ee] to-[#f8ebe2] px-6 py-20">
+    <section className="relative overflow-hidden bg-gradient-to-b from-[#fffaf6] dark:from-[#241d19] via-[#fdf4ee] dark:via-[#211b18] to-[#f8ebe2] dark:to-[#1c1714] px-6 py-20">
       {/* Dekorasi background */}
       <div className="pointer-events-none absolute -left-20 top-12 h-52 w-52 rounded-full bg-rose-200/20 blur-3xl" />
       <div className="pointer-events-none absolute -right-20 bottom-12 h-52 w-52 rounded-full bg-amber-200/20 blur-3xl" />
@@ -35,20 +35,20 @@ export default function ThankYouSection({
             duration: 0.7,
             delay: 0.15,
           }}
-          className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-rose-500"
+          className="mb-4 text-sm font-medium uppercase tracking-[0.3em] text-rose-500 dark:text-rose-300"
         >
           Terima Kasih
         </motion.p>
 
         <h2
-          className="mb-6 text-4xl leading-tight text-[#6f5145] md:text-6xl"
+          className="mb-6 text-4xl leading-tight text-[#6f5145] dark:text-[#f5dfb2] md:text-6xl"
           style={{ fontFamily: "August Script" }}
         >
           Thank You
         </h2>
 
         <p
-          className="mx-auto max-w-xl text-base leading-8 text-stone-600 md:text-lg"
+          className="mx-auto max-w-xl text-base leading-8 text-stone-600 dark:text-stone-200 md:text-lg"
           style={{ fontFamily: "TheSeasonsRegular" }}
         >
           {message}
@@ -60,18 +60,18 @@ export default function ThankYouSection({
           <span className="h-px w-12 bg-rose-300" />
         </div>
 
-        <p className="mb-3 text-sm text-stone-500">
+        <p className="mb-3 text-sm text-stone-500 dark:text-stone-300">
           Kami yang berbahagia,
         </p>
 
         <h3
-          className="text-3xl text-[#7a5549] md:text-4xl"
+          className="text-3xl text-[#7a5549] dark:text-[#f5dfb2] md:text-4xl"
           style={{ fontFamily: "August Script" }}
         >
           {brideName} &amp; {groomName}
         </h3>
 
-        <p className="mt-5 text-sm leading-6 text-stone-500">
+        <p className="mt-5 text-sm leading-6 text-stone-500 dark:text-stone-300">
           Beserta keluarga kedua mempelai
         </p>
       </motion.div>

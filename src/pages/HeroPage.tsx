@@ -1,6 +1,16 @@
 import { motion } from "framer-motion";
 import { weddingData } from "../data/wedding";
-import left from "../assets/left.png";
+import left from "../assets/left.webp";
+import heroPhoto from "../assets/photos/hero.webp";
+import bridePhoto from "../assets/photos/ayang.webp";
+import groomPhoto from "../assets/photos/iicgiqfxyynudgg4gjll.webp";
+import gallery1 from "../assets/photos/1.webp";
+import gallery3 from "../assets/photos/3.webp";
+import gallery4 from "../assets/photos/4.webp";
+import gallery5 from "../assets/photos/5.webp";
+import gallery6 from "../assets/photos/6.webp";
+import gallery7 from "../assets/photos/7.webp";
+import gallery8 from "../assets/photos/8.webp";
 import { FaInstagram } from "react-icons/fa";
 import Audio from "../components/Audio";
 import Gallery from "../components/Galery";
@@ -11,7 +21,6 @@ import GiftCard from "../components/GiftCard";
 // import { useEffect } from "react";
 // import AutoScrollPage from "../components/AutoScrollPage";
 import ThankYouSection from "../components/ThankYouSection";
-import { useState, useEffect } from "react";
 import CountDown from "../components/CountDown";
 interface GalleryImage {
     id: string | number;
@@ -24,56 +33,56 @@ const weddingPhotos: GalleryImage[] = [
     {
         id: 1,
         src: "https://wedding-fajri.s3.nevaobjects.id/hero.jpg",
-        thumbnail: "https://wedding-fajri.s3.nevaobjects.id/hero.jpg",
+        thumbnail: heroPhoto,
         alt: "",
         caption: "",
     },
     {
         id: 2,
         src: "https://wedding-fajri.s3.nevaobjects.id/1.jpeg",
-        thumbnail: "https://wedding-fajri.s3.nevaobjects.id/1.jpeg",
+        thumbnail: gallery1,
         alt: "",
         caption: "",
     },
     {
         id: 3,
         src: "https://wedding-fajri.s3.nevaobjects.id/3.jpeg",
-        thumbnail: "https://wedding-fajri.s3.nevaobjects.id/3.jpeg",
+        thumbnail: gallery3,
         alt: "",
         caption: "",
     },
     {
         id: 4,
         src: "https://wedding-fajri.s3.nevaobjects.id/4.jpeg",
-        thumbnail: "https://wedding-fajri.s3.nevaobjects.id/4.jpeg",
+        thumbnail: gallery4,
         alt: "",
         caption: "",
     },
     {
         id: 5,
         src: "https://wedding-fajri.s3.nevaobjects.id/5.jpeg",
-        thumbnail: "https://wedding-fajri.s3.nevaobjects.id/5.jpeg",
+        thumbnail: gallery5,
         alt: "",
         caption: "",
     },
     {
         id: 6,
         src: "https://wedding-fajri.s3.nevaobjects.id/6.jpeg",
-        thumbnail: "https://wedding-fajri.s3.nevaobjects.id/6.jpeg",
+        thumbnail: gallery6,
         alt: "",
         caption: "",
     },
     {
         id: 7,
         src: "https://wedding-fajri.s3.nevaobjects.id/7.jpeg",
-        thumbnail: "https://wedding-fajri.s3.nevaobjects.id/7.jpeg",
+        thumbnail: gallery7,
         alt: "",
         caption: "",
     },
     {
         id: 8,
         src: "https://wedding-fajri.s3.nevaobjects.id/8.jpeg",
-        thumbnail: "https://wedding-fajri.s3.nevaobjects.id/8.jpeg",
+        thumbnail: gallery8,
         alt: "",
         caption: "",
     },
@@ -172,13 +181,7 @@ const weddingSchedules: WeddingEventProps[] = [
 ];
 export default function Hero() {
 
-    const [guest, setGuest] = useState("");
-
-    useEffect(() => {
-        const params = new URLSearchParams(window.location.search);
-        const guestParam = params.get("guest") || "Tamu Undangan";
-        setGuest(guestParam);
-    }, []);
+    const guest = new URLSearchParams(window.location.search).get("guest") || "Tamu Undangan";
     return (
         <div className="relative">
             {/* Musik Icon Fixed di pojok kanan bawah */}
@@ -188,7 +191,8 @@ export default function Hero() {
             <div className="relative mx-auto h-[650px] w-full overflow-hidden">
                 {/* Background */}
                 <img
-                    src="https://wedding-fajri.s3.nevaobjects.id/hero.jpg"
+                    src={heroPhoto}
+                    fetchPriority="high"
                     alt={`The wedding of ${weddingData.bride} and ${weddingData.groom}`}
                     className="absolute inset-0 h-full w-full object-cover object-center"
                 />
@@ -277,7 +281,7 @@ export default function Hero() {
                 <div className="pointer-events-none absolute -right-24 bottom-10 h-72 w-72 rounded-full bg-[#FFDBCC]/10 blur-3xl" />
 
                 <div className="relative mx-auto max-w-3xl">
-                    <div className="overflow-hidden rounded-[2rem] border border-[#E0CD67]/20 bg-gradient-to-br from-[#5B3218]/90 via-[#4A2511]/95 to-[#32160B]/95 px-6 py-10 shadow-[0_28px_80px_rgba(22,8,2,0.35)] backdrop-blur-md sm:px-10 md:py-14">
+                    <div className="overflow-hidden rounded-[2rem] border border-[#E0CD67]/20 bg-gradient-to-br from-[#5B3218]/90 dark:from-[#30251e]/90 via-[#4A2511]/95 dark:via-[#241c17]/95 to-[#32160B]/95 dark:to-[#1c1714]/95 px-6 py-10 shadow-[0_28px_80px_rgba(22,8,2,0.35)] backdrop-blur-md sm:px-10 md:py-14">
                         {/* Garis dekorasi atas */}
                         <div className="pointer-events-none absolute inset-x-8 top-0 h-px bg-gradient-to-r from-transparent via-[#E0CD67]/60 to-transparent" />
 
@@ -380,12 +384,12 @@ export default function Hero() {
                     <div className="text-white text-[160px] leading-none">LO</div>
                 </div>
 
-                <div className="bg-gradient-to-b from-[#fffaf6] via-[#fdf4ee] to-[#f8ebe2] px-10">
-                    <div className="text-[#5b0000] text-[160px] leading-none -mt-10 text-center">
+                <div className="bg-gradient-to-b from-[#fffaf6] dark:from-[#241d19] via-[#fdf4ee] dark:via-[#211b18] to-[#f8ebe2] dark:to-[#1c1714] px-10">
+                    <div className="text-[#5b0000] dark:text-[#f5dfb2] text-[160px] leading-none -mt-10 text-center">
                         VE
                     </div>
                     <div
-                        className="text-[#5b0000] text-3xl italic text-right"
+                        className="text-[#5b0000] dark:text-[#f5dfb2] text-3xl italic text-right"
                         style={{ fontFamily: "August Script" }}
                     >
                         With You
@@ -393,29 +397,35 @@ export default function Hero() {
                     <div >
                         <img
                             src={left}
+                            width={600}
+                            height={503}
+                            loading="lazy"
+                            decoding="async"
                             alt="Wedding Background"
                             className="w-[200px]"
                         />
                     </div>
                     <div className="mt-[100px]">
                         <img
-                            src="https://wedding-fajri.s3.nevaobjects.id/ayang.webp"
+                            src={bridePhoto}
+                            loading="lazy"
+                            decoding="async"
                             alt="Wedding Background"
                             className="w-full h-[650px] object-cover"
                         />
                         <div
-                            className="text-3xl text-[#5b0000] font-bold"
+                            className="text-3xl text-[#5b0000] dark:text-[#f5dfb2] font-bold"
                             style={{ fontFamily: "TheSeasonsRegular" }}
                         >
                             Dea Ayu Ananda
                         </div>
                         <div >
-                            <a target="_blank" href="https://www.instagram.com/deayuananda?igsh=MWxpajVuZWlxNTV6dw==" className="text-[#5b0000] text-xl flex items-center">
+                            <a target="_blank" href="https://www.instagram.com/deayuananda?igsh=MWxpajVuZWlxNTV6dw==" className="text-[#5b0000] dark:text-[#f5dfb2] text-xl flex items-center">
                                 <FaInstagram className="" />
                                 deayuananda
                             </a>
                             <div className="text-xl">
-                                <span className="text-[#5b0000]" style={{ fontFamily: "TheSeasonsRegular" }}>
+                                <span className="text-[#5b0000] dark:text-[#f5dfb2]" style={{ fontFamily: "TheSeasonsRegular" }}>
                                     Anak ke dua dari
                                 </span>{" "}
                                 Ibu Afrida Yanti dan <br /> Bapak Sudimianto
@@ -424,24 +434,26 @@ export default function Hero() {
                     </div>
                     <div className="mt-[50px] pb-[100px] ">
                         <img
-                            src="https://wedding-fajri.s3.nevaobjects.id/iicgiqfxyynudgg4gjll.webp"
+                            src={groomPhoto}
+                            loading="lazy"
+                            decoding="async"
                             alt="Wedding Background"
                             className="w-full h-[650px] object-cover"
                         />
                         <div
-                            className="text-3xl text-[#5b0000] font-bold text-right"
+                            className="text-3xl text-[#5b0000] dark:text-[#f5dfb2] font-bold text-right"
                             style={{ fontFamily: "TheSeasonsRegular" }}
                         >
                             M. Fajri Afriyansyah
                         </div>
                         <div >
 
-                            <a target="_blank" href="https://www.instagram.com/fajriafriyansyah_?igsh=MWxpajVuZWlxNTV6dw%3D%3D" className="text-[#5b0000] text-xl flex items-center text-right">
+                            <a target="_blank" href="https://www.instagram.com/fajriafriyansyah_?igsh=MWxpajVuZWlxNTV6dw%3D%3D" className="text-[#5b0000] dark:text-[#f5dfb2] text-xl flex items-center text-right">
                                 <FaInstagram className="" />
                                 fajriafriyansyah_
                             </a>
                             <div className="text-xl text-right ">
-                                <span className="text-[#5b0000]" style={{ fontFamily: "TheSeasonsRegular" }}>
+                                <span className="text-[#5b0000] dark:text-[#f5dfb2]" style={{ fontFamily: "TheSeasonsRegular" }}>
                                     Anak ke pertama dari
                                 </span>{" "}
                                 Ibu Salmadiati dan <br /> Bapak Afrizal
@@ -469,7 +481,7 @@ export default function Hero() {
                         Our Beloved
                     </div>
                     <div
-                        className="text-4xl text-[#5b0000] font-bold text-white"
+                        className="text-4xl text-[#5b0000] dark:text-[#f5dfb2] font-bold text-white"
                         style={{ fontFamily: "TheSeasonsRegular" }}>
                         STORY
                     </div>
@@ -478,7 +490,7 @@ export default function Hero() {
                 <Swipper />
             </div>
             <div className="">
-                <div className="bg-[#fffaf6] relative w-full overflow-hidden bg-[#4A2412] px-4 py-7 sm:px-8 sm:py-9">
+                <div className="bg-[#fffaf6] dark:bg-[#211c19] relative w-full overflow-hidden bg-[#4A2412] dark:bg-[#211c19] px-4 py-7 sm:px-8 sm:py-9">
                     {/* Dekorasi latar */}
                     <div className="pointer-events-none absolute -right-12 -top-16 h-40 w-40 rounded-full border border-white/10" />
                     <div className="pointer-events-none absolute -right-5 -top-8 h-28 w-28 rounded-full border border-white/10" />
@@ -504,7 +516,7 @@ export default function Hero() {
             <div>
                 <GiftCard />
             </div>
-            <div className=" p-2 bg-[#3d2115] ">
+            <div className=" p-2 bg-[#3d2115] dark:bg-[#181412] ">
                 <RSVP />
             </div>
             <div>
@@ -517,4 +529,4 @@ export default function Hero() {
 
         </div>
     );
-}   
+}

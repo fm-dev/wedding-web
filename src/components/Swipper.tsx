@@ -1,5 +1,10 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
+import firstMeetPhoto from "../assets/photos/gw6xiwfavle0tyzpf1bf.webp";
+import holidayPhoto from "../assets/photos/liburan.webp";
+import engagementPhoto from "../assets/photos/l11wjtbngwn08izi6nuv.webp";
+import preweddingPhoto from "../assets/photos/oecri36sknamgyyjcuqh.webp";
+import weddingPhoto from "../assets/photos/fadfadf.webp";
 
 import "swiper/css";
 import "swiper/css/pagination";
@@ -7,27 +12,27 @@ import "swiper/css/pagination";
 const stories = [
     {
         title: "First Meet",
-        image: "https://wedding-fajri.s3.nevaobjects.id/gw6xiwfavle0tyzpf1bf.webp",
+        image: firstMeetPhoto,
         desc: "Awal kisah kami dimulai di kampus Fajri. Sebuah pertemuan sederhana yang membawa kami saling mengenal."
     },
     {
         title: "Liburan",
-        image: "https://wedding-fajri.s3.nevaobjects.id/liburan.jpeg",
+        image: holidayPhoto,
         desc: "Perjalanan pertama kami di Jakarta, menciptakan banyak cerita dan kenangan yang tak terlupakan. dan tentu nya pasti ditemanin keluarga :)"
     },
     {
         title: "Engagement",
-        image: "https://wedding-fajri.s3.nevaobjects.id/l11wjtbngwn08izi6nuv.webp",
+        image: engagementPhoto,
         desc: "Hari istimewa ketika sebuah janji terucap. Alhamdulillah, langkah menuju masa depan dipermudah."
     },
     {
         title: "Prewedding",
-        image: "https://wedding-fajri.s3.nevaobjects.id/oecri36sknamgyyjcuqh.webp",
+        image: preweddingPhoto,
         desc: "Sebuah sesi foto penuh cinta sebagai kenangan menuju hari bahagia yang telah dinantikan."
     },
     {
         title: "Wedding Day",
-        image: "https://wedding-fajri.s3.nevaobjects.id/fadfadf.jpeg",
+        image: weddingPhoto,
         desc: "Kupikir pertemuan kita hanya singkat. Ternyata, kamu menjadi bagian terpenting dan alasan terbesar dalam bahagiaku.",
     }
 ];
@@ -67,12 +72,14 @@ export default function StorySlider() {
             >
                 {stories.map((story, index) => (
                     <SwiperSlide key={index}>
-                        <div
-                            className="story-card"
-                            style={{
-                                backgroundImage: `url(${story.image})`,
-                            }}
-                        >
+                        <div className="story-card">
+                            <img
+                                src={story.image}
+                                alt=""
+                                loading="lazy"
+                                decoding="async"
+                                className="absolute inset-0 h-full w-full object-cover"
+                            />
                             <div className="overlay">
                                 <h5>{story.title}</h5>
                                 <p>{story.desc}</p>

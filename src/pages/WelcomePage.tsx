@@ -1,18 +1,12 @@
 import { motion } from "framer-motion"
 import { weddingData } from "../data/wedding"
-import React from "react"
-import HeroPage from "../pages/HeroPage"
+import heroPhoto from "../assets/photos/hero.webp";
 import Typewriter from "typewriter-effect";
-import { useState, useEffect } from "react";
+import { lazy, useState } from "react";
+const HeroPage = lazy(() => import("./HeroPage"));
 export default function Welcome() {
-  const [flagHeroPage, setFlagHeroPage] = React.useState(false);
-  const [guest, setGuest] = useState("");
-
-  useEffect(() => {
-    const params = new URLSearchParams(window.location.search);
-    const guestParam = params.get("guest") || "Tamu Undangan";
-    setGuest(guestParam);
-  }, []);
+  const [flagHeroPage, setFlagHeroPage] = useState(false);
+  const guest = new URLSearchParams(window.location.search).get("guest") || "Tamu Undangan";
 
   const handleFlagClick = () => {
     setFlagHeroPage(true);
@@ -22,7 +16,8 @@ export default function Welcome() {
       <section className="relative min-h-screen overflow-hidden">
         {/* Background image full */}
         <img
-          src="https://wedding-fajri.s3.nevaobjects.id/hero.jpg"
+          src={heroPhoto}
+          fetchPriority="high"
           alt="Wedding Background"
           className="absolute inset-0 h-full w-full object-cover"
         />

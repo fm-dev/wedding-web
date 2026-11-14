@@ -44,11 +44,11 @@ export default function MusicIconPlayer() {
         className="fixed bottom-4 right-4 z-50 cursor-pointer"
         onClick={toggleMusic}
       >
-        <div className="bg-white rounded-full p-4 shadow-lg flex items-center justify-center">
+        <div className="bg-white dark:bg-stone-800 rounded-full p-4 shadow-lg flex items-center justify-center">
           {isPlaying ? (
-            <TbMusicPause className="text-3xl text-[#5b3c1a]" />
+            <TbMusicPause className="text-3xl text-[#5b3c1a] dark:text-amber-100" />
           ) : (
-            <TbMusic className="text-3xl text-[#5b3c1a]" />
+            <TbMusic className="text-3xl text-[#5b3c1a] dark:text-amber-100" />
           )}
         </div>
       </motion.div>

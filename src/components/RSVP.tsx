@@ -187,7 +187,7 @@ export default function RSVP() {
         <section className="
             px-6
             py-16
-            bg-[#3d2115]
+            bg-[#3d2115] dark:bg-[#181412]
         ">
 
 
@@ -221,9 +221,9 @@ export default function RSVP() {
     border
     border-[#E7CA88]/25
     bg-gradient-to-br
-    from-[#70442B]
-    via-[#58321F]
-    to-[#422317]
+    from-[#70442B] dark:from-[#30251e]
+    via-[#58321F] dark:via-[#241c17]
+    to-[#422317] dark:to-[#1c1714]
     p-6
     shadow-[0_24px_70px_rgba(20,8,3,0.35)]
     sm:p-8
@@ -699,9 +699,9 @@ export default function RSVP() {
                                         </div>
 
                                         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} className="flex-1">
-                                            <div className="bg-white rounded-2xl p-4 shadow-sm">
+                                            <div className="bg-white dark:bg-stone-800 rounded-2xl p-4 shadow-sm">
                                                 <div className="flex flex-wrap items-center justify-between gap-2">
-                                                    <div className="font-semibold text-[#2B2B2B]">{item.name}</div>
+                                                    <div className="font-semibold text-[#2B2B2B] dark:text-stone-100">{item.name}</div>
 
                                                     {item.attendance && (
                                                         <span
@@ -716,7 +716,7 @@ export default function RSVP() {
                                                         </span>
                                                     )}
                                                 </div>
-                                                <div className="mt-2 text-sm text-[#4B5563]">“{item.message || '—'}”</div>
+                                                <div className="mt-2 text-sm text-[#4B5563] dark:text-stone-300">“{item.message || '—'}”</div>
                                             </div>
                                         </motion.div>
                                     </div>

@@ -72,7 +72,7 @@ export default function GiftCard() {
   };
 
   return (
-    <section className="relative isolate overflow-hidden bg-[#3d2115] px-4 py-20 sm:px-6">
+    <section className="relative isolate overflow-hidden bg-[#3d2115] dark:bg-[#181412] px-4 py-20 sm:px-6">
       {/* Dekorasi background */}
       <div className="pointer-events-none absolute -left-24 top-20 h-64 w-64 rounded-full bg-[#d4af67]/10 blur-3xl" />
       <div className="pointer-events-none absolute -right-20 bottom-10 h-72 w-72 rounded-full bg-[#c8846b]/10 blur-3xl" />
@@ -177,7 +177,7 @@ export default function GiftCard() {
                   duration: 0.55,
                   delay: index * 0.12,
                 }}
-                className="group relative overflow-hidden rounded-[28px] border border-[#e7ca88]/20 bg-gradient-to-br from-[#70442b] via-[#58321f] to-[#422317] p-6 shadow-[0_24px_60px_rgba(20,8,3,0.35)]"
+                className="group relative overflow-hidden rounded-[28px] border border-[#e7ca88]/20 bg-gradient-to-br from-[#70442b] dark:from-[#30251e] via-[#58321f] dark:via-[#241c17] to-[#422317] dark:to-[#1c1714] p-6 shadow-[0_24px_60px_rgba(20,8,3,0.35)]"
               >
                 {/* Dekorasi kartu */}
                 <div className="pointer-events-none absolute -right-16 -top-16 h-44 w-44 rounded-full border border-[#e7ca88]/10" />
